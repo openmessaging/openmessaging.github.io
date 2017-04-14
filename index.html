@@ -178,9 +178,9 @@
                 <h2 class="page-header">Why Open-Messaging ?</h2>
             </div>
             <div class="col-md-12">
-                <p style="font-size: medium">Messaging and streaming products has been widely used in modern architecture and data processing, for decoupling, queuing, buffering, ordering, replicating, etc.
+                <p style="font-size: medium">Messaging and Streaming products have been widely used in modern architecture and data processing, for decoupling, queuing, buffering, ordering, replicating, etc.
                     But when data transfers across different messaging and streaming platforms, the compatibility problem arises, which always means much additional work.
-                    Once JMS was a solution. But it has explicit defects, limited in java environment, lack resource and security management, no FIFO guarantee and streaming feature, which make it unable to satisfy modern cloud-oriented messaging and streaming applications.
+                    Although JMS was a good solution during the past decade. But it is limited in java environment, lacks specified guidelines for load balance/fault-tolerance, administration, security, and streaming feature, which make it not good at satisfying modern cloud-oriented messaging and streaming applications.
                 <br/>Open-Messaging is vendor-neutral and language-independent, provides industry guidelines for areas of finance, e-commerce, IoT and big-data, and aimed to develop messaging and streaming applications across heterogeneous systems and platforms.</p>
             </div>
         </div>
@@ -196,7 +196,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-check"></i>Cloud Oriented</h4>
+                        <h4><i class="fa fa-fw fa-compass"></i>Cloud Oriented</h4>
                     </div>
                     <div class="panel-body">
                         <p>distributed, scalable, flexible, isolation, security</p>
@@ -206,20 +206,51 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-gift"></i>Various Areas</h4>
+                        <h4><i class="fa fa-fw fa-compass"></i>Multi Domains</h4>
                     </div>
                     <div class="panel-body">
-                        <p> finance, e-commerce, IoT, big-data</p>
+                        <p> finance, e-commerce, IoT</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-compass"></i>Language Independent</h4>
+                        <h4><i class="fa fa-fw fa-compass"></i>Platform Independent</h4>
                     </div>
                     <div class="panel-body">
-                        <p>java,c/c++,go,.net,python</p>
+                        <p>java,c/c++,go,.net,python,etc</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-compass"></i>Benchmark</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>standard benchmark support</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-compass"></i>Streaming</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>support stream processing</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-compass"></i>Wire Level Pluggable</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>MQTT, AMQP, Private, etc</p>
                     </div>
                 </div>
             </div>
@@ -230,10 +261,10 @@
             <div class="col-lg-12">
                 <h2 class="page-header">Who are involved</h2>
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
-                            <img src="https://rocketmq.apache.org/assets/images/rmq-feature-lowlatency.png" width="100%" height="100%"/>
+                            <img src="https://rocketmq.apache.org/assets/images/rmq-logo.png" width="100%" height="150"/>
                     </div>
                     <div class="panel-body">
                         <h4><a target="_blank" href="https://rocketmq.apache.org">Apache RocketMQ</a></h4>
@@ -241,13 +272,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
-                        <span class="fa-stack fa-5x">
-                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-car fa-stack-1x fa-inverse"></i>
-                        </span>
+                        <img src="https://github.com/twitter/distributedlog/raw/master/website/images/distributedlog_logo_m.png?raw=true"/>
                     </div>
                     <div class="panel-body">
                         <h4><a target="_blank" href="http://distributedlog.incubator.apache.org">Apache DistributedLog</a></h4>
@@ -255,13 +283,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
-                        <span class="fa-stack fa-5x">
-                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-support fa-stack-1x fa-inverse"></i>
-                        </span>
+                        <img src="https://raw.githubusercontent.com/yahoo/pulsar/master/docs/img/pulsar.png"/>
                     </div>
                     <div class="panel-body">
                         <h4><a target="_blank" href="https://github.com/yahoo/pulsar">Pulsar</a></h4>
@@ -269,17 +294,25 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
-                        <span class="fa-stack fa-5x">
-                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-database fa-stack-1x fa-inverse"></i>
-                        </span>
+                        <img src="http://www.fluentd.org/assets/img/miscellany/fluentd-logo_2x.png"/>
                     </div>
                     <div class="panel-body">
                         <h4><a target="_blank" href="http://www.fluentd.org">Fluentd</a></h4>
                         <p>CNCF project</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+                        <img src="https://os.alipayobjects.com/rmsportal/qLlKVsZuTordMlU.png"/>
+                    </div>
+                    <div class="panel-body">
+                        <h4><a target="_blank" href="https://www.alipay.com/">Apipay</a></h4>
+                        <p>Alibaba</p>
                     </div>
                 </div>
             </div>
