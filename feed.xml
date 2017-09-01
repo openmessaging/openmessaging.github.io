@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>OpenMessaging</title>
-    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+    <description>OpenMessaging is cloud-oriented and vendor-neutral, provides industry guidelines for areas of finance, e-commerce, IoT and big-data, and aimed to develop messaging and streaming applications across heterogeneous systems and platforms.
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 01 Sep 2017 21:46:12 +0800</pubDate>
-    <lastBuildDate>Fri, 01 Sep 2017 21:46:12 +0800</lastBuildDate>
+    <pubDate>Sat, 02 Sep 2017 00:17:41 +0800</pubDate>
+    <lastBuildDate>Sat, 02 Sep 2017 00:17:41 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
