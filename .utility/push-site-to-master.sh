@@ -2,7 +2,6 @@
 if [ "$TRAVIS_REPO_SLUG" == "openmessaging/openmessaging.github.io" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "source" ]; then
 
   echo -e "Publishing openmessaging site...\n"
-  jekyll build
   rm -rf $HOME/site-latest
   cp -R _site/ $HOME/site-latest
 
@@ -18,6 +17,6 @@ if [ "$TRAVIS_REPO_SLUG" == "openmessaging/openmessaging.github.io" ] && [ "$TRA
   git commit -m "Latest site on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to master"
   git push -fq origin master > /dev/null
 
-  echo -e "Published Site to master.\n"
+  echo -e "Published openmessaging site to master.\n"
   
 fi
