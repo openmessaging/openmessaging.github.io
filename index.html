@@ -1,0 +1,249 @@
+---
+layout: default
+section_id: home
+slides:
+  - bg: images/@index/OpenMessagingCover.png
+    title:
+      text: '<font color="black" style="text-transform: none">A cloud-oriented, vendor-neutral open standard for distributed messaging</font><br><iframe style="display: inline-block;" src="https://ghbtns.com/github-btn.html?user=openmessaging&repo=openmessaging-java&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe> <iframe style="display: inline-block;" src="https://ghbtns.com/github-btn.html?user=openmessaging&repo=openmessaging-java&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="158px" height="30px"></iframe>'
+      class: large-20 medium-20
+boxes:
+  - icon_class: fa fa-cloud
+    title: Cloud Oriented
+    text:
+      Designed for robust implementation on clouds with scalability, flexibility, isolation, and security.
+  - icon_class: fa fa-compass
+    title: Multi Domains
+    text:
+      Does not rely on or favors any business products and provides a large range of support including finance, e-commerce and IoT.
+  - icon_class: fa fa-star-half-empty
+    title: Platform Independent
+    text:
+      Compatible with most platforms including Java, c/c++, go, .net, python, etc.
+  - icon_class: fa fa-filter
+    title: Streaming
+    text:
+      Enables big data streaming and computation to meet the cutting-edge business demands.
+  - icon_class: fa fa-dot-circle-o
+    title: Standard Benchmark
+    text:
+      Facilitates standard benchmark to allow standard tests.
+  - icon_class: fa fa-plug
+    title: Wire Level Pluggable
+    text:
+      MQTT, AMQP, Private protocols are implemented to guarantee a wider range of compatibility.
+
+testimonials:
+  - text: "We have focused on Messaging and Streaming field for years, during which we explored Corba Notification, JMS and other specifications to try to solve our stickiest business. But unfortunately, we fell short so we have no other option but to create a new cloud-oriented specification."
+    author: Von Gosling
+    position: Alibaba Senior Architect, Co-Creator of Apache RocketMQ
+  - text: "There are many different open source messaging solutions, including Apache ActiveMQ, Apache RocketMQ, Apache Pulsar, and Apache Kafka. The lack of an industry-wide, scalable messaging standard makes evaluating a suitable solution difficult."
+    author: Sijie Guo
+    position: PMC Chair of Apache BookKeeper
+  - text: "In developing Pulsar at Yahoo, we have placed since the beginning a lot of care in defining a simple yet effective abstraction model for messaging applications. We strongly believe that it would be very beneficial for the messaging ecosystem to have a new API standard that developers can use as a target for their applications."
+    author: Matteo Merli
+    position: Co-Creator of Apache Pulsar
+  - text: "We have accumulated certain experience on MQs and APIs unification, and are willing to join OpenMessaging to construct a common standard of APIs together with others. We sincerely believe that a unified and widely accepted API standard can benefit MQ technology and applications relied on it."
+    author: Neil Qi
+    position: DIDI Architect
+
+clients:
+  - images/@index/alibaba-logo.png
+  - images/@index/linux-logo.png
+  - images/@index/aliyun-logo.png
+  - images/@index/streamlio-logo.png
+  - images/@index/didi-logo.png
+  - images/@index/bk-logo.png
+---
+
+<div class='advanced mod modDefaultSlider'>
+  <div class='sequence' data-autostop='on' data-timeout='0'>
+    <ul class='sequence-pagination'>
+      {% for slide in page.slides %}
+        {% if forloop.index == 1 %}
+          <li class='current'></li>
+        {% else %}
+          <li></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    <ul class='sequence-canvas'>
+      {% for slide in page.slides %}
+        {% if forloop.index == 1 %}
+          {% assign class = "static" %}
+        {% else %}
+          {% assign class = '' %}
+        {% endif %}
+
+        <li class='frame {{class}}'>
+          <div class='bg' style='background-image: url({{slide.bg}});'></div>
+          {% if slide.infos %}
+            {% for info in slide.infos %}
+              <div class='info{{forloop.index}} {{info.animation}}' style=''>
+                <div class='row'>
+                  <div class='medium-10 large-8 columns'>
+                    <p class='fa fa-check' style='color: #333;'>{{info.text}}</p>
+                    <div class='spacing'></div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class='title {{slide.title.animation}}' style='color: rgb(255, 255, 255);'>
+              <div class='row'>
+                <div class='{{slide.title.class}} columns'>
+                  <h2>{{slide.title.text}}</h2>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+          <div class='buttons-wrapper {{slide.buttons.animation}}' style=''>
+            <div class='row'>
+              <div class='{{slide.buttons.class}} columns'>
+                <div class='two spacing'></div>
+                {% for button in slide.buttons.items %}
+                  <a target="_blank" class='button {{button.class}}' href='{{button.url}}'>{{button.text}}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+<div class='full'>
+  <div class='row'>
+    <div class='large-12 columns'>
+      <h4 style='color: #999'>Our mission</h4>
+      <h2>Why OpenMessaging ?</h2>
+      <div class='spacing'></div>
+      <p>Messaging and Streaming products have been widely used in modern architecture and data processing, for decoupling, queuing, buffering, ordering, replicating, etc. But when data transfers across different messaging and streaming platforms, the compatibility problem arises, which always means much additional work. Although JMS was a good solution during the past decade. But it is limited in java environment, lacks specified guidelines for load balance/fault-tolerance, administration, security, and streaming feature, which make it not good at satisfying modern cloud-oriented messaging and streaming applications.</p>
+    </div>
+  </div>
+  <div class='two spacing'></div>
+</div>
+<div class='full' style='background: #f5f5f5'>
+  <div class='row'>
+    <div class='large-12 columns'>
+      <div class='mod modBoxedTextSlider'>
+        <div class='boxes'>
+          {% for box in page.boxes %}
+            <div class='box' style='height: 300px'>
+              <i class='{{box.icon_class}}'></i>
+              <h4>{{box.title}}</h4>
+              <p>{{box.text}}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='three spacing'></div>
+</div>
+
+
+<div class='full'>
+  <div class='row'>
+    <div class='medium-6 columns'>
+      <img class="fadeinleft" width="500" height="340" alt="" src="images/@index/oms-4domains.png" />
+    </div>
+    <div class='medium-6 columns'>
+      <div class='spacing'></div>
+      <h4 style='color: #999'>Universal</h4>
+      <h2>Multi Domains</h2>
+      <div class='spacing'></div>
+      <p>OpenMessaging is vendor-neutral and language-independent, provides industry guidelines for areas of finance, e-commerce, IoT and big-data, and aimed to develop messaging and streaming applications across heterogeneous systems and platforms.</p>
+      <div class='spacing'></div>
+      <a class='button small' href='https://github.com/openmessaging/'>Learn more</a>
+    </div>
+  </div>
+  <div class='four spacing'></div>
+  <div class='row'>
+    <div class='medium-6 columns'>
+      <div class='two spacing'></div>
+      <h4 style='color: #999'>Simple</h4>
+      <h2>Easy to Migration</h2>
+      <div class='spacing'></div>
+      <ul class='shortcode-list'>
+        <li>
+          <i class='fa fa-check'></i>
+          Cloud Oriented, a common messaging spec in many cloud platform
+        </li>
+        <li>
+          <i class='fa fa-check'></i>
+          Hybrid Cloud, connects different cloud platform through OMS
+        </li>
+        <li>
+          <i class='fa fa-check'></i>
+          Cloud Independent, users are free to choose
+        </li>
+      </ul>
+      <div class='spacing'></div>
+      <a class='button small' href='https://github.com/openmessaging/'>Learn more</a>
+    </div>
+    <div class='medium-6 columns'>
+      <img class="fadeinright" width="500" height="400" alt="" src="images/@index/oms-4clouds.png" />
+    </div>
+  </div>
+  <div class='three spacing'></div>
+</div>
+
+<!-- <div class='full parallax' style='background: #f5f5f5'>
+  <div class='row'>
+    {% for milestone in page.milestones %}
+      <div class='medium-3 large-3 columns right-border left-border'>
+        <div class='mod modMilestone no-icon'>
+          <strong data-from='{{milestone.from}}' data-to='{{milestone.to}}'>&nbsp;</strong>
+          <span>{{milestone.title}}</span>
+          <div class='spacing'></div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class='three spacing'></div>
+</div> -->
+
+<div class='full' style='background: #f5f5f5'>
+  <div class='row'>
+    <div class='large-12 columns'>
+      <p class='centered-text'>
+        <i class='fa fa-quote-left' style='color: #F9CE06; font-size: 36px;'></i>
+      </p>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='large-12 columns'>
+      <div class='mod modTestimonials'>
+        <div class='row'>
+          <div class='small-12 columns'>
+            <div class='items centered-text'>
+              {% for t in page.testimonials  %}
+                <div class='item'>
+                  <p class='quote'>{{t.text}}</p>
+                  <p class='author'>- {{t.author}}, {{t.position}}</p>
+                  <div class='two spacing'></div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class='spacing'></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='three spacing'></div>
+</div>
+<div class='full' style='background-image: url(../images/@index/customers-bg.jpg); color: #fff;'>
+  <div class='row'>
+    <div class='large-12 columns'>
+      <div class='mod modClients' data-slides_to_show='4'>
+        <div class='clients'>
+          {% for client in page.clients %}
+            <div><img alt="" src="{{client}}" /></div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='two spacing'></div>
+</div>
