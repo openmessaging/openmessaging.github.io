@@ -16,6 +16,8 @@
      path: charter.html
    - name: TSC
      path: tsc.html
+   - name: Contribution
+     path: contribution.html
 #- name: About
 #  path: about.html
 #  section_id: about
