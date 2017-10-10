@@ -46,13 +46,14 @@ $small-font-color: scale-color($header-font-color, $lightness: 35%) !default;
 // We use these to style paragraphs
 $paragraph-font-family: inherit !default;
 $paragraph-font-weight: $font-weight-normal !default;
-$paragraph-font-size: 1rem !default;
+$paragraph-font-size: 1.2rem !default;
 $paragraph-line-height: 1.6 !default;
 $paragraph-margin-bottom: rem-calc(20) !default;
 $paragraph-aside-font-size: rem-calc(14) !default;
 $paragraph-aside-line-height: 1.35 !default;
 $paragraph-aside-font-style: italic !default;
 $paragraph-text-rendering: optimizeLegibility !default;
+$paragraph-color: #5f5a5a !default;
 
 // We use these to style <code> tags
 $code-color: $oil !default;
@@ -238,6 +239,7 @@ $align-class-breakpoints:
       line-height: $paragraph-line-height;
       margin-bottom: $paragraph-margin-bottom;
       text-rendering: $paragraph-text-rendering;
+      color: $paragraph-color;
 
       &.lead { @include lead; }
 

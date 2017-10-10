@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  OpenMessaging Domain Architecture V0.1
-date:   2017-09-12 10:20:05
 categories: design
 author: yukon
 images:
