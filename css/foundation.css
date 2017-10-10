@@ -5091,12 +5091,13 @@ a {
 p {
   font-family: inherit;
   font-weight: normal;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 1.4285714286rem;
-  text-rendering: optimizeLegibility; }
+  text-rendering: optimizeLegibility;
+  color: #5f5a5a; }
   p.lead {
-    font-size: 1.25rem;
+    font-size: 1.45rem;
     line-height: 1.6; }
   p aside {
     font-size: 1rem;
@@ -5179,7 +5180,7 @@ code {
 ul,
 ol,
 dl {
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 1.4285714286rem;
   list-style-position: outside;

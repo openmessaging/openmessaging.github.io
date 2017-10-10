@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>OpenMessaging Domain Architecture V0.1</title>
-  <meta name="description" content="OpenMessaging has released first alpha version recently, Apache RocketMQ has provided a partial implementation for OpenMessaging-0.1.0-alpha.">
+  <title>OpenMessaging: Building an Open Standard for Distributed Messaging</title>
+  <meta name="description" content="Through a collaborative effort from enterprises and communities invested in cloud, big data, and standard APIs, I’m excited to welcome the OpenMessaging proj...">
 
   <link rel="stylesheet" href="/css/foundation.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -36,7 +36,7 @@
   <script src="/javascripts/imagesloaded.pkgd.min.js" type="text/javascript"></script>
   <script src="/javascripts/slick.min.js" type="text/javascript"></script>
 
-  <link rel="canonical" href="/design/2017/09/12/openmessaging-domain-architecture-v0.1.html">
+  <link rel="canonical" href="/news/2017/10/10/openMessaging-launches-with-linux-foundation.html">
   <link rel="alternate" type="application/rss+xml" title="OpenMessaging" href="/feed.xml" />
 </head>
 
@@ -136,22 +136,22 @@
       <div class='mod modBlogPost big no_bg'>
   <div class='images'>
     
-      <div class='image'><img alt="" src="/images/@blog/oms-domain-design-v0.1.png" /></div>
+      <div class='image'><img alt="" src="/images/@blog/the-linux-foundation.png" /></div>
     
   </div>
   <div class='content'>
     <p class='info'>
-      <span>September 12, 2017</span>
+      <span>October 10, 2017</span>
       /
       <span>
         by
-        <a href="">yukon</a>
+        <a href="">Mike Dolan</a>
       </span>
       /
       <span>
         In
         
-          <a href="#">design</a>
+          <a href="#">news</a>
           
         
       </span>
@@ -160,68 +160,42 @@
         <a href="#">4 commetns</a>
       </span> -->
     </p>
-    <h3><a href="/design/2017/09/12/openmessaging-domain-architecture-v0.1.html">OpenMessaging Domain Architecture V0.1</a></h3>
-    <p>Above is the domain architecture of Open Messaging, see <a href="/openmessaging-java">JavaDoc</a> for details.</p>
+    <h3><a href="/news/2017/10/10/openMessaging-launches-with-linux-foundation.html">OpenMessaging: Building an Open Standard for Distributed Messaging</a></h3>
+    <p>Through a collaborative effort from enterprises and communities invested in cloud, big data, and standard APIs, I’m excited to welcome the OpenMessaging project to The Linux Foundation. The OpenMessaging community’s goal is to create a globally adopted, vendor-neutral, and open standard for distributed messaging that can be deployed in cloud, on-premise, and hybrid use cases.</p>
 
-<p>OpenMessaging has released first <a href="https://search.maven.org/#search%7Cga%7C1%7Copenmessaging">alpha version</a> recently, Apache RocketMQ has provided a <a href="https://github.com/apache/incubator-rocketmq/tree/openmessaging-impl/openmessaging">partial implementation</a> for OpenMessaging-0.1.0-alpha.</p>
+<p>Alibaba, Yahoo!, Didi, and Streamlio are the founding project contributors. The Linux Foundation has worked with the initial project community to establish a governance model and structure for the long-term benefit of the ecosystem working on a messaging API standard.</p>
 
-<h2 id="namespace">Namespace</h2>
+<p>As more companies and developers move toward cloud native applications, challenges are developing at scale with messaging and streaming applications. These include interoperability issues between platforms, lack of compatibility between wire-level protocols and a lack of standard benchmarking across systems.</p>
 
-<p>Namespace likes a cgroup namespace, to create an isolated space with security guarantee. Each namespace has its own set of producer, consumer, topic, queue and so on. OpenMessaging uses MessagingAccessPoint to access/read/write the resources of a specified Namespace.</p>
+<p>In particular, when data transfers across different messaging and streaming platforms, compatibility problems arise, meaning additional work and maintenance cost. Existing solutions lack standardized guidelines for load balance, fault tolerance, administration, security, and streaming features. Current systems don’t satisfy the needs of modern cloud-oriented messaging and streaming applications. This can lead to redundant work for developers and makes it difficult or impossible to meet cutting-edge business demands around IoT, edge computing, smart cities, and more.</p>
 
-<h2 id="producer">Producer</h2>
-
-<p>OpenMessaging defines two kinds of Producer: Producer and SequenceProducer.</p>
+<p>Contributors to OpenMessaging are looking to improve distributed messaging by:</p>
 
 <ul>
-  <li>Producer, provides various send methods to send a message to a specified destination, Topic or Queue. Three ways are supported: synchronous, asynchronous and oneway.</li>
-  <li>SequenceProducer, focuses on speed, the implementation can adopt the batch way, send many messages and then commit at once.</li>
+  <li>Creating a global, cloud-oriented, vendor-neutral industry standard for distributed messaging</li>
+  <li>Facilitating a standard benchmark for testing applications</li>
+  <li>Enabling platform independence</li>
+  <li>Targeting cloud data streaming and messaging requirements with scalability, flexibility, isolation, and security built in</li>
+  <li>Fostering a growing community of contributing developers</li>
 </ul>
 
-<h2 id="consumer">Consumer</h2>
+<p>You can learn more about the new project and how to participate here: http://openmessaging.cloud</p>
 
-<p>OpenMessaging defines two kinds of Consumer: PullConsumer, PushConsumer and StreamingConsumer. Each consumer only supports consume messages from the Queue.</p>
+<p>These are some of the organizations supporting OpenMessaging:</p>
 
-<ul>
-  <li>PullConsumer, pulls messages from the specified queue, supports submit the consume result by acknowledgement at any time. One PullConsumer only can pull messages from one fixed queue.</li>
-  <li>PushConsumer, receives messages from multiple queues, these messages are pushed from the MOM server. PushConsumer can attach to multiple queues with separate MessageListener and submit consume result through ReceivedMessageContext at any time.</li>
-  <li>StreamingConsumer, a brand-new consumer type, a stream-oriented consumer, to integrate messaging system with Streaming/BigData related platforms easily. StreamingConsumer supports consume messages from partitions of a specified queue like a iterator.</li>
-</ul>
+<p>“We have focused on the messaging and streaming field for years, during which we explored Corba notification, JMS and other standards to try to solve our stickiest business requirements. After evaluating the available alternatives, Alibaba chose to create a new cloud-oriented messaging standard, OpenMessaging, which is a vendor-neutral and language-independent and provides industrial guidelines for areas like finance, e-commerce, IoT, and big data. Moreover, it aims to develop messaging and streaming applications across heterogeneous systems and platforms. We hope it can be open, simple, scalable, and interoperable. In addition, we want to build an ecosystem according to this standard, such as benchmark, computation, and various connectors. We would like to have new contributions and hope everyone can work together to push the OpenMessaging standard forward.” <strong>— Von Gosling, senior architect at Alibaba, co-creator of Apache RocketMQ, and original initiator of OpenMessaging</strong></p>
 
-<h2 id="topic-queue-and-routing">Topic Queue and Routing</h2>
+<p>“As the sophistication and scale of applications’ messaging needs continue to grow, lack of a standard interface has created complexity and inflexibility barriers for developers and organizations. Streamlio is excited to work with other leaders to launch the OpenMessaging standards initiative in order to give customers easy access to high-performance, low-latency messaging solutions like Apache Pulsar that offer the durability, consistency, and availability that organizations require.” <strong>— Matteo Merli, software engineer at Streamlio, co-creator of Apache Pulsar, and member of Apache BookKeeper PMC</strong></p>
 
-<p>These three concepts are closely connected, although Topic and Queue have different responsibilities, they are confusing.
-Topic</p>
+<p>“Oath–a Verizon subsidiary of leading media and tech brands including Yahoo and AOL– supports open, collaborative initiatives and is glad to join the OpenMessaging project.” <strong>— Joe Francis, director, Core Platforms</strong></p>
 
-<ul>
-  <li>Topic, the carrier of origin messages, is responsibility for holding messages. The distribution and sequential of messages in Topic is undefined.</li>
-</ul>
+<p>“In Didi, we have defined a private set of producer API and consumer API to hide differences among open source MQs such as Apache Kafka, Apache RocketMQ, etc. as well as to provide additional customized features. We are planning to release these to the open source community. So far, we have accumulated a lot of experience on MQs and API unification, and are willing to work in OpenMessaging to construct a common standard of APIs together with others. We sincerely believe that a unified and widely accepted API standard can benefit MQ technology and applications that rely on it.” <strong>— Neil Qi, architect at Didi</strong></p>
 
-<h2 id="routing">Routing</h2>
+<p>“There are many different open source messaging solutions, including Apache ActiveMQ, Apache RocketMQ, Apache Pulsar, and Apache Kafka. The lack of an industry-wide, scalable messaging standard makes evaluating a suitable solution difficult. We are excited to support the joint effort from multiple open source projects working together to define a scalable, open messaging specification. Apache BookKeeper has been successfully deployed in production at Yahoo (via Apache Pulsar) and Twitter (via Apache DistributedLog) as their durable, high-performance, low-latency storage foundation for their enterprise-grade messaging systems. We are excited to join the OpenMessaging effort to help other projects address common problems like low-latency durability, consistency and availability in messaging solutions.” <strong>— Sijie Guo, co-founder of Streamlio, PMC chair of Apache BookKeeper, and co-creator of Apache DistributedLog</strong></p>
 
-<p>The messages in Topic are original, waiting for processing, which always can’t arouse the interests of consumers. In a word, the messages in Topic is producer-oriented, not consumer–oriented.</p>
+<hr />
 
-<p>So the Routing is in charge of processing the original messages in Topic, and routing to Queue. Each Routing has a operator pipeline, consists of  a series of operators. The messages will flow through the operator pipeline from Topic and Queue.</p>
-
-<p>A  operator is used to handle the flowing messages in Routing. There are many kinds of  operator, expression operator, deduplicator operator, joiner operator, filter operator, rpc operator, and so on.</p>
-
-<p>What’s more? Routing can cross the network, message can be routed from a network partition to another partition.</p>
-
-<h2 id="queue">Queue</h2>
-
-<p>The messages have been routed to Queue, now can be consumed by consumers.
-It is noteworthy that a Queue should be divided into partitions, a message will be routed to a specified partition by MessageHeader#SHARDING_KEY.</p>
-
-<p>Queue also accepts messages from Producer directly, sometimes, we want to the shortest path from Producer to Consumer, for performance.</p>
-
-<h2 id="topic-vs-queue">Topic vs. Queue</h2>
-
-<p>Both Topic and Queue are the carrier of messages.
-Topic is producer-oriented, while Queue is consumer-oriented.
-Messages in Topic are from Producer, while messages in Queue is from Topic or Producer.
-Queue is divided into partitions, while the arch of Topic is undefined. 
-Queue is a little sub set of a Topic in most cases.
-Create or destroy a Queue is easy and producer irrelevant.</p>
+<p>News Source: <a href="https://www.linuxfoundation.org/blog/building-open-standard-distributed-messaging-introducing-openmessaging/">Building an Open Standard for Distributed Messaging: Introducing OpenMessaging</a></p>
 
   </div>
 </div>
