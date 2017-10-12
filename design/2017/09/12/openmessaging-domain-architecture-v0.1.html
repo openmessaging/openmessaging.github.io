@@ -16,6 +16,7 @@
 
   <script src="/javascripts/libs.js" type="text/javascript"></script>
   <script>
+    var _hmt = _hmt || [];
     // terrificjs bootstrap
     (function($) {
         $(document).ready(function() {
@@ -28,6 +29,10 @@
             var application = new Tc.Application($page, config);
             application.registerModules();
             application.start();
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?da02b4505574c2f46febdc0874af5c8b";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
         });
     })(Tc.$);
   </script>
