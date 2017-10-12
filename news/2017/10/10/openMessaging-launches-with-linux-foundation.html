@@ -16,7 +16,8 @@
 
   <script src="/javascripts/libs.js" type="text/javascript"></script>
   <script>
-    var _hmt = _hmt || [];
+    var _hmt = _hmt || []; //define it for baidu seo
+
     // terrificjs bootstrap
     (function($) {
         $(document).ready(function() {
@@ -29,6 +30,8 @@
             var application = new Tc.Application($page, config);
             application.registerModules();
             application.start();
+
+            //Add baidu seo
             var hm = document.createElement("script");
             hm.src = "https://hm.baidu.com/hm.js?da02b4505574c2f46febdc0874af5c8b";
             var s = document.getElementsByTagName("script")[0]; 
@@ -36,6 +39,16 @@
         });
     })(Tc.$);
   </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-89603173-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-89603173-2');
+  </script>
+
   <link href="http://fonts.googleapis.com/css?family=Raleway:400,700,300" media="screen" rel="stylesheet" type="text/css" />
   <script src="/javascripts/masonry.pkgd.js" type="text/javascript"></script>
   <script src="/javascripts/imagesloaded.pkgd.min.js" type="text/javascript"></script>
