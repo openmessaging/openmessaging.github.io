@@ -20,10 +20,12 @@ Below are possible reasons for this error:
 The error code **OMS_DRIVER_URL_ILLEGAL** indicates that the provided OMS driver url's format is illegal, below is the right schema:
 
 ```java
-oms:<driver_type>://<access_point>[,<access_point>,...]/<namespace>
+oms:<driver_type>://[account_id@]host1[:port1][,host2[:port2],...[,hostN[:portN]]]/<region>:<namespace>
 ```
 <br>
-For example, `oms:rocketmq://domain.a, domain.b/public_cloud`, multiple access points can be used for load balancing.
+For example, `oms:rocketmq://alice@rocketmq.apache.org,openmessaging.io/us-east:default_space`, multiple access points can be used for load balancing.
+
+More details please refer to [here](https://github.com/openmessaging/specification/blob/master/oms_access_point_schema.md).
 
 ## IMPL_VERSION_ILLEGAL
 
