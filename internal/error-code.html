@@ -169,10 +169,12 @@
 
 <p>The error code <strong>OMS_DRIVER_URL_ILLEGAL</strong> indicates that the provided OMS driver url’s format is illegal, below is the right schema:</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">oms:</span><span class="o">&lt;</span><span class="n">driver_type</span><span class="o">&gt;:</span><span class="c1">//&lt;access_point&gt;[,&lt;access_point&gt;,...]/&lt;namespace&gt;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">oms:</span><span class="o">&lt;</span><span class="n">driver_type</span><span class="o">&gt;:</span><span class="c1">//[account_id@]host1[:port1][,host2[:port2],...[,hostN[:portN]]]/&lt;region&gt;:&lt;namespace&gt;</span>
 </code></pre></div></div>
 <p><br />
-For example, <code class="highlighter-rouge">oms:rocketmq://domain.a, domain.b/public_cloud</code>, multiple access points can be used for load balancing.</p>
+For example, <code class="highlighter-rouge">oms:rocketmq://alice@rocketmq.apache.org,openmessaging.io/us-east:default_space</code>, multiple access points can be used for load balancing.</p>
+
+<p>More details please refer to <a href="https://github.com/openmessaging/specification/blob/master/oms_access_point_schema.md">here</a>.</p>
 
 <h2 id="impl_version_illegal">IMPL_VERSION_ILLEGAL</h2>
 
