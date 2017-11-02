@@ -14,8 +14,6 @@
   children:
    - name: Charter
      path: charter.html
-   - name: TSC
-     path: tsc.html
    - name: Contribution
      path: contribution.html
 #- name: About
