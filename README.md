@@ -2,8 +2,19 @@
 
 ## Installation
 
-In order to build the website and run it locally, you'll need to have Ruby version 2.4.0 installed. To get set up:
+In order to build the website and run it locally, you'll need to have Ruby version 2.4.1 installed. If you're using [RVM](https://rvm.io/):
 
+```bash
+$ rvm install . && rvm use .
+```
+
+If you're using [rbenv](https://github.com/rbenv/rbenv):
+
+```bash
+$ rbenv install && rbenv local 2.4.1
+```
+
+Once you're using the correct Ruby version, you can install all dependencies:
 
 ```bash
 $ make setup
@@ -17,7 +28,7 @@ To run the site locally:
 $ make serve
 ```
 
-Then navigate to `http://localhost:4000` to visit the site. When you make changes to the website source in `_posts` or `_docs`, the site will update automatically in your browser.
+Then navigate to http://localhost:4000 to visit the site. When you make changes to the website source in `_posts` or `_docs`, the site will update automatically in your browser.
 
 ## How to publish the site
 
