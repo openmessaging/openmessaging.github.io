@@ -1,11 +1,13 @@
 - name: Home
   path: index.html
   section_id: home
-- name: DOCs
+- name: Docs
   section_id: document
   children:
-   - name: java apis
-     path: openmessaging-java
+  - name: Java APIs
+    path: openmessaging-java
+  - name: Getting started
+    path: /docs/getting-started
 - name: Blog
   path: blog/
   section_id: blog

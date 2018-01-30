@@ -19,3 +19,9 @@ plugins:
 
 include:
 - _internal
+
+defaults:
+- scope:
+    path: docs
+  values:
+    layout: docs

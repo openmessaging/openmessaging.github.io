@@ -1,0 +1,14 @@
+<div class="links">
+  <h3>Docs</h3>
+  <ul>
+  {% for subnav in site.data.nav %}
+  {% if subnav.name == 'Docs' %}
+  {% for doc in subnav.children %}
+  {% unless doc.name == 'Java APIs' %}
+  <li><a href="{{doc.path}}">{{ doc.name }}</a></li>
+  {% endunless %}
+  {% endfor %}
+  {% endif %}
+  {% endfor %}
+  </ul>
+</div>

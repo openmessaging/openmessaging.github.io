@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<div class="full">
+  <div class="row">
+    <div class="large-9 columns">
+      <div class="mod modBlogPost big no_bg">
+        <h3><a href="{{page.url}}">{{page.title}}</a></h3>
+        {{content}}
+      </div>
+    </div>
+    <div class="large-3 columns" id="sidebar">
+      {% include docs-sidebar.html %}
+    </div>
+  </div>
+</div>
