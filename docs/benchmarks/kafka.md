@@ -109,13 +109,17 @@ Once you've successfully SSHed into the client host, you can run the benchmarks 
 
 ```bash
 $ cd /opt/benchmark
-$ sudo bin/benchmark --drivers driver-kafka/kafka.yaml workloads/*.yaml
+$ sudo bin/benchmark \
+  --drivers driver-kafka/kafka.yaml \
+  workloads/*.yaml
 ```
 
 You can also run specific workloads in the `workloads` folder. Here's an example:
 
 ```bash
-$ sudo bin/benchmark --drivers driver-kafka/kafka.yaml workloads/1-topic-16-partitions-1kb.yaml
+$ sudo bin/benchmark \
+  --drivers driver-kafka/kafka.yaml \
+  workloads/1-topic-16-partitions-1kb.yaml
 ```
 
 There are multiple Kafka "modes" for which you can run benchmarks. Each mode has its own YAML configuration file in the `driver-kafka` folder.
@@ -130,14 +134,20 @@ The example used the "standard" mode as configured in `driver-kafka/kafka.yaml`.
 
 ```bash
 # Exactly once
-$ sudo bin/benchmark --drivers driver-kafka/kafka-exactly-once.yaml workloads/*.yaml
+$ sudo bin/benchmark \
+  --drivers driver-kafka/kafka-exactly-once.yaml \
+  workloads/*.yaml
 
 # Sync
-$ sudo bin/benchmark --drivers driver-kafka/kafka-sync.yaml workloads/*.yaml
+$ sudo bin/benchmark \
+  --drivers driver-kafka/kafka-sync.yaml \
+  workloads/*.yaml
 ```
 
 Here's an example of running a specific benchmarking workload in exactly once mode:
 
 ```bash
-$ sudo bin/benchmark --drivers driver-kafka/kafka-exactly-once.yaml workloads/1-topic-16-partitions-1kb.yaml
+$ sudo bin/benchmark \
+  --drivers driver-kafka/kafka-exactly-once.yaml \
+  workloads/1-topic-16-partitions-1kb.yaml
 ```
