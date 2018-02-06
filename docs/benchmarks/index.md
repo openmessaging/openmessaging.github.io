@@ -57,7 +57,7 @@ Workload | Topics | Partitions per topic | Message size | Subscriptions per topi
 [`max-rate-1-topic-100-partitions-1kb.yaml`](workloads/max-rate-1-topic-100-partitions-1kb.yaml) | 1 | 100 | 1 kB | 1 | 1 | 0 | 0 | 5
 [`max-rate-1-topic-100-partitions-100b.yaml`](workloads/max-rate-1-topic-100-partitions-100b.yaml) | 1 | 100 | 100 bytes | 1 | 1 | 0 | 0 | 5
 
-> Instructions for running specific workloads—or all workloads sequentially—can be found in the platform-specific [documentation](#documentation).
+> Instructions for running specific workloads—or all workloads sequentially—can be found in the platform-specific [documentation](#supported-messaging-systems).
 
 ## Interpreting the results
 
