@@ -10,6 +10,11 @@ github_username:  jekyll
 
 # Build settings
 markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
 permalink: pretty
 
 paginate: 4

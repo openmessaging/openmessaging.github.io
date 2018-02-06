@@ -6,8 +6,12 @@
   children:
   - name: Java APIs
     path: openmessaging-java
-  - name: Getting started
-    path: /docs/getting-started
+  - name: Benchmarks
+    subchildren:
+    - name: Intro
+      path: /docs/benchmarks
+    - name: Apache Kafka
+      path: /docs/benchmarks/kafka
 - name: Blog
   path: blog/
   section_id: blog
