@@ -63,19 +63,19 @@ Workload | Topics | Partitions per topic | Message size | Subscriptions per topi
 
 Initially, you should see a log message like this, which affirms that a warm-up phase is intiating:
 
-```log
+```
 22:03:19.125 [main] INFO - ----- Starting warm-up traffic ------
 ```
 
 You should then see some just a handful of readings, followed by an aggregation message that looks like this:
 
-```log
+```
 22:04:19.329 [main] INFO - ----- Aggregated Pub Latency (ms) avg:  2.1 - 50%:  1.7 - 95%:  3.0 - 99%: 11.8 - 99.9%: 45.4 - 99.99%: 52.6 - Max: 55.4
 ```
 
 At this point, the benchmarking traffic will begin. You'll start see readings like this emitted every few seconds:
 
-```log
+```
 22:03:29.199 [main] INFO - Pub rate 50175.1 msg/s /  4.8 Mb/s | Cons rate 50175.2 msg/s /  4.8 Mb/s | Backlog:  0.0 K | Pub Latency (ms) avg:  3.5 - 50%:  1.9 - 99%: 39.8 - 99.9%: 52.3 - Max: 55.4
 ```
 
@@ -90,13 +90,13 @@ Measure | Meaning | Units
 
 At the end of each [workload](#benchmarking-workloads), you'll see a log message that aggregages the results:
 
-```log
+```
 22:19:20.577 [main] INFO - ----- Aggregated Pub Latency (ms) avg:  1.8 - 50%:  1.7 - 95%:  2.8 - 99%:  3.0 - 99.9%:  8.0 - 99.99%: 17.1 - Max: 58.9
 ```
 
 You'll also see a message like this that tells into which JSON file the benchmarking results have been saved (all JSON results are saved to the `/opt/benchmark` directory):
 
-```log
+```
 22:19:20.592 [main] INFO - Writing test result into 1-topic-1-partition-100b-Kafka-2018-01-29-22-19-20.json
 ```
 
