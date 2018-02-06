@@ -80,7 +80,7 @@ Variable | Description | Default
 `ami` | The [Amazon Machine Image](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) (AWI) to be used by the cluster's machines | [`ami-9fa343e7`](https://access.redhat.com/articles/3135091)
 `instance_types` | The EC2 instance types used by the various components | `i3.4xlarge` (Pulsar brokers and BookKeeper bookies), `t2.small` (ZooKeeper), `c4.8xlarge` (benchmarking client)
 
-> If you modify the `public_key_path`, make sure that you point to the appropriate SSH key path when running the [Ansible playbook](#running-the-ansible-playbook).
+If you modify the `public_key_path`, make sure that you point to the appropriate SSH key path when running the [Ansible playbook](#running-the-ansible-playbook).
 
 ### Running the Ansible playbook
 
@@ -93,7 +93,7 @@ $ ansible-playbook \
   deploy.yaml
 ```
 
-> If you're using an SSH private key path different from `~/.ssh/pulsar_aws`, you can specify that path using the `--private-key` flag, for example `--private-key=~/.ssh/my_key`.
+If you're using an SSH private key path different from `~/.ssh/pulsar_aws`, you can specify that path using the `--private-key` flag, for example `--private-key=~/.ssh/my_key`.
 
 ## SSHing into the client host
 
