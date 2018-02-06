@@ -1,10 +1,8 @@
-BUNDLER_VERSION := 1.16
-BUNDLE := bundle _$(BUNDLER_VERSION)_
+BUNDLE := bundle
 JEKYLL := $(BUNDLE) exec jekyll
 
 setup:
 	gem install bundler \
-		-v $(BUNDLER_VERSION) \
 		--no-rdoc \
 		--no-ri
 	NOKOGIRI_USE_SYSTEM_LIBRARIES=true $(BUNDLE) install \
@@ -15,5 +13,5 @@ build:
 
 serve:
 	$(JEKYLL) serve \
-		--livereload \
-		--incremental
+		--incremental \
+		--livereload
