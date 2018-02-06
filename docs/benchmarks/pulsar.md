@@ -109,13 +109,17 @@ Once you've successfully SSHed into the client host, you can run all [available 
 
 ```bash
 $ cd /opt/benchmark
-$ sudo bin/benchmark --drivers driver-pulsar/pulsar.yaml workloads/*.yaml
+$ sudo bin/benchmark \
+  --drivers driver-pulsar/pulsar.yaml \
+  workloads/*.yaml
 ```
 
 You can also run specific workloads in the `workloads` folder. Here's an example:
 
 ```bash
-$ sudo bin/benchmark --drivers driver-pulsar/pulsar.yaml workloads/1-topic-16-partitions-1kb.yaml
+$ sudo bin/benchmark \
+  --drivers driver-pulsar/pulsar.yaml \
+  workloads/1-topic-16-partitions-1kb.yaml
 ```
 
 There are multiple Pulsar "modes" for which you can run benchmarks. Each mode has its own YAML configuration file in the `driver-pulsar` folder.
@@ -128,11 +132,15 @@ Effectively once | Pulsar with message de-duplication enabled ("effectively-once
 The example used the "standard" mode as configured in `driver-pulsar/pulsar.yaml`. To run all available benchmark workloads in "effectively once" mode:
 
 ```bash
-$ sudo bin/benchmark --drivers driver-pulsar/pulsar-effectively-once.yaml workloads/*.yaml
+$ sudo bin/benchmark \
+  --drivers driver-pulsar/pulsar-effectively-once.yaml \
+  workloads/*.yaml
 ```
 
 Here's an example of running a specific benchmarking workload in effectively once mode:
 
 ```bash
-$ sudo bin/benchmark --drivers driver-pulsar/pulsar-effectively-once.yaml workloads/1-topic-16-partitions-1kb.yaml
+$ sudo bin/benchmark \
+  --drivers driver-pulsar/pulsar-effectively-once.yaml \
+  workloads/1-topic-16-partitions-1kb.yaml
 ```
