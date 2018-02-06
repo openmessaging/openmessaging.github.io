@@ -7,11 +7,14 @@
   - name: Java APIs
     path: openmessaging-java
   - name: Benchmarks
+    path: /docs/benchmarks
     subchildren:
     - name: Intro
       path: /docs/benchmarks
     - name: Apache Kafka
       path: /docs/benchmarks/kafka
+    - name: Apache Pulsar
+      path: /docs/benchmarks/pulsar
 - name: Blog
   path: blog/
   section_id: blog
