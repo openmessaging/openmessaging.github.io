@@ -3,9 +3,16 @@
   <ul>
   {% for subnav in site.data.nav %}
   {% if subnav.name == 'Docs' %}
-  {% for doc in subnav.children %}
-  {% unless doc.name == 'Java APIs' %}
-  <li><a href="{{doc.path}}">{{ doc.name }}</a></li>
+  {% for child in subnav.children %}
+  {% unless child.name == 'Java APIs' %}
+  {% if child.subchildren %}
+  <li><h4>{{ child.name }}</h4></li>
+  <ul>
+    {% for subchild in child.subchildren %}
+    <li><a href="{{ subchild.path }}">{{ subchild.name }}</a></li>
+    {% endfor %}
+  </ul>
+  {% endif %}
   {% endunless %}
   {% endfor %}
   {% endif %}
