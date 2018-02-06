@@ -1,10 +1,10 @@
 ---
-title: Apache Kafka benchmarks
+title: Apache Pulsar benchmarks
 ---
 
-This tutorial shows you how to run OpenMessaging [benchmarks](..) for [Apache Kafka](https://kafka.apache.org). You can currently deploy to the following platforms:
+This tutorial shows you how to run OpenMessaging [benchmarks](..) for [Apache Pulsar](https://pulsar.incubator.apache.org). You can currently deploy to the following platforms:
 
-* [Amazon Web Services](#deploy-a-kafka-cluster-on-amazon-web-services) (AWS)
+* [Amazon Web Services](#deploy-a-pulsar-cluster-on-amazon-web-services) (AWS)
 
 ## Initial setup
 
@@ -25,9 +25,9 @@ Once you have the repo cloned locally, you can create all the artifacts necessar
 $ mvn install
 ```
 
-## Deploy a Kafka cluster on Amazon Web Services
+## Deploy a Pulsar cluster on Amazon Web Services
 
-You can deploy a Kafka cluster on AWS (for benchmarking purposes) using [Terraform](https://terraform.io/) and [Ansible](http://docs.ansible.com/ansible/latest/intro_installation.html). You'll need to have both of those tools installed as well as the [`terraform-inventory` plugin](https://github.com/adammck/terraform-inventory) for Terraform.
+You can deploy a Pulsar cluster on AWS (for benchmarking purposes) using [Terraform](https://terraform.io/) and [Ansible](http://docs.ansible.com/ansible/latest/intro_installation.html). You'll need to have both of those tools installed as well as the [`terraform-inventory` plugin](https://github.com/adammck/terraform-inventory) for Terraform.
 
 In addition, you'll need to:
 
@@ -37,22 +37,22 @@ In addition, you'll need to:
 
 ### SSH keys
 
-Once you're all set up with AWS and have the necessary tools installed locally, you'll need to create both a public and a private SSH key at `~/.ssh/kafka_aws` (private) and `~/.ssh/kafka_aws.pub` (public), respectively.
+Once you're all set up with AWS and have the necessary tools installed locally, you'll need to create both a public and a private SSH key at `~/.ssh/pulsar_aws` (private) and `~/.ssh/pulsar_aws.pub` (public), respectively.
 
 ```bash
-$ ssh-keygen -f ~/.ssh/kafka_aws
+$ ssh-keygen -f ~/.ssh/pulsar_aws
 ```
 
 When prompted to enter a passphrase, simply hit **Enter** twice. Then, make sure that the keys have been created:
 
 ```bash
-$ ls ~/.ssh/kafka_aws*
+$ ls ~/.ssh/pulsar_aws*
 ```
 
 With SSH keys in place, you can create the necessary AWS resources using just a few Terraform commands:
 
 ```bash
-$ cd driver-kafka/deploy
+$ cd driver-pulsar/deploy
 $ terraform init
 $ terraform apply
 ```
@@ -61,7 +61,7 @@ This will install the following [EC2](https://aws.amazon.com/ec2) instances (plu
 
 Resource | Description | Count
 :--------|:------------|:-----
-Kafka instances | The VMs on which a Kafka broker will run | 3
+Pulsar instances | The VMs on which a Pulsar broker will run | 3
 ZooKeeper instances | The VMs on which a ZooKeeper node will run | 3
 Client instance | The VM from which the benchmarking suite itself will be run | 1
 
@@ -75,16 +75,16 @@ There's a handful of configurable parameters related to the Terraform deployment
 
 Variable | Description | Default
 :--------|:------------|:-------
-`region` | The AWS region in which the Kafka cluster will be deployed | `us-west-2`
-`public_key_path` | The path to the SSH public key that you've generated | `~/.ssh/kafka_aws.pub`
+`region` | The AWS region in which the Pulsar cluster will be deployed | `us-west-2`
+`public_key_path` | The path to the SSH public key that you've generated | `~/.ssh/pulsar_aws.pub`
 `ami` | The [Amazon Machine Image](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) (AWI) to be used by the cluster's machines | [`ami-9fa343e7`](https://access.redhat.com/articles/3135091)
-`instance_types` | The EC2 instance types used by the various components | `i3.4xlarge` (Kafka brokers), `t2.small` (ZooKeeper), `c4.8xlarge` (benchmarking client)
+`instance_types` | The EC2 instance types used by the various components | `i3.4xlarge` (Pulsar brokers and BookKeeper bookies), `t2.small` (ZooKeeper), `c4.8xlarge` (benchmarking client)
 
 > If you modify the `public_key_path`, make sure that you point to the appropriate SSH key path when running the [Ansible playbook](#running-the-ansible-playbook).
 
 ### Running the Ansible playbook
 
-With the appropriate infrastructure in place, you can install and start the Kafka cluster using Ansible with just one command:
+With the appropriate infrastructure in place, you can install and start the Pulsar cluster using Ansible with just one command:
 
 ```bash
 $ ansible-playbook \
@@ -93,51 +93,46 @@ $ ansible-playbook \
   deploy.yaml
 ```
 
-> If you're using an SSH private key path different from `~/.ssh/kafka_aws`, you can specify that path using the `--private-key` flag, for example `--private-key=~/.ssh/my_key`.
+> If you're using an SSH private key path different from `~/.ssh/pulsar_aws`, you can specify that path using the `--private-key` flag, for example `--private-key=~/.ssh/my_key`.
 
 ## SSHing into the client host
 
 In the [output](https://www.terraform.io/intro/getting-started/outputs.html) produced by Terraform, there's a `client_ssh_host` variable that provides the IP address for the client EC2 host from which benchmarks can be run. You can SSH into that host using this command:
 
 ```bash
-$ ssh -i ~/.ssh/kafka_aws ec2-user@$(terraform output client_ssh_host)
+$ ssh -i ~/.ssh/pulsar_aws ec2-user@$(terraform output client_ssh_host)
 ```
 
 ## Running the benchmarks from the client host
 
-Once you've successfully SSHed into the client host, you can run the benchmarks like this:
+Once you've successfully SSHed into the client host, you can run all [available benchmark workloads](../#benchmarking-workloads) like this:
 
 ```bash
 $ cd /opt/benchmark
-$ sudo bin/benchmark --drivers driver-kafka/kafka.yaml workloads/*.yaml
+$ sudo bin/benchmark --drivers driver-pulsar/pulsar.yaml workloads/*.yaml
 ```
 
 You can also run specific workloads in the `workloads` folder. Here's an example:
 
 ```bash
-$ sudo bin/benchmark --drivers driver-kafka/kafka.yaml workloads/1-topic-16-partitions-1kb.yaml
+$ sudo bin/benchmark --drivers driver-pulsar/pulsar.yaml workloads/1-topic-16-partitions-1kb.yaml
 ```
 
-There are multiple Kafka "modes" for which you can run benchmarks. Each mode has its own YAML configuration file in the `driver-kafka` folder.
+There are multiple Pulsar "modes" for which you can run benchmarks. Each mode has its own YAML configuration file in the `driver-pulsar` folder.
 
 Mode | Description | Config file
 :----|:------------|:-----------
-Standard | Kafka with message idempotence disabled (at-least-once semantics) | `kafka.yaml`
-Exactly once | Kafka with message idempotence enabled ("exactly-once" semantics) | `kafka-exactly-once.yaml`
-Sync | Kafka with durability enabled (all published messages synced to disk) | `kafka-sync.yaml`
+Standard | Pulsar with message de-duplication disabled (at-least-once semantics) | `pulsar.yaml`
+Effectively once | Pulsar with message de-duplication enabled ("effectively-once" semantics) | `pulsar-effectively-once.yaml`
 
-The example used the "standard" mode as configured in `driver-kafka/kafka.yaml`. To run all available benchmark workloads in "exactly once" or "sync" mode instead:
+The example used the "standard" mode as configured in `driver-pulsar/pulsar.yaml`. To run all available benchmark workloads in "effectively once" mode:
 
 ```bash
-# Exactly once
-$ sudo bin/benchmark --drivers driver-kafka/kafka-exactly-once.yaml workloads/*.yaml
-
-# Sync
-$ sudo bin/benchmark --drivers driver-kafka/kafka-sync.yaml workloads/*.yaml
+$ sudo bin/benchmark --drivers driver-pulsar/pulsar-effectively-once.yaml workloads/*.yaml
 ```
 
-Here's an example of running a specific benchmarking workload in exactly once mode:
+Here's an example of running a specific benchmarking workload in effectively once mode:
 
 ```bash
-$ sudo bin/benchmark --drivers driver-kafka/kafka-exactly-once.yaml workloads/1-topic-16-partitions-1kb.yaml
+$ sudo bin/benchmark --drivers driver-pulsar/pulsar-effectively-once.yaml workloads/1-topic-16-partitions-1kb.yaml
 ```
