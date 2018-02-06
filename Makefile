@@ -13,5 +13,4 @@ build:
 
 serve:
 	$(JEKYLL) serve \
-		--incremental \
 		--livereload

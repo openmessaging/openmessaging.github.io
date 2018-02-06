@@ -4,8 +4,6 @@
 - name: Docs
   section_id: document
   children:
-  - name: Java APIs
-    path: openmessaging-java
   - name: Benchmarks
     path: /docs/benchmarks
     subchildren:
@@ -15,16 +13,18 @@
       path: /docs/benchmarks/kafka
     - name: Apache Pulsar
       path: /docs/benchmarks/pulsar
+  - name: Java APIs
+    path: openmessaging-java
 - name: Blog
-  path: blog/
+  path: /blog
   section_id: blog
 - name: Community
   section_id: community
   children:
    - name: Charter
-     path: charter.html
+     path: /charter
    - name: Contribution
-     path: contribution.html
+     path: /contribution
 #- name: About
 #  path: about.html
 #  section_id: about
