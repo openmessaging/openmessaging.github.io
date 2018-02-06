@@ -2,7 +2,7 @@
 title: OpenMessaging
 email: yukon@apache.org
 description: |
-  OpenMessaging is a cloud-oriented and vendor-neutral, providing industry guidelines for areas such as finance, e-commerce, IoT and Big Data, and aimed to develop messaging and streaming applications across heterogeneous systems and platforms.
+  OpenMessaging is a cloud-oriented and vendor-neutral open standard for messaging, providing industry guidelines for areas such as finance, e-commerce, IoT and Big Data and oriented toward furthering messaging and streaming applications across heterogeneous systems and platforms.
 baseurl: "" # the subpath of your site, e.g. /blog/
 
 # Build settings
