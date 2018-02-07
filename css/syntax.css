@@ -1,8 +1,8 @@
 .highlighter-rouge .highlight { margin-bottom: 15px; }
 .highlight pre { padding: 15px; overflow: scroll; }
-.highlight pre, .highlight pre.highlight code { background-color: #272822; color: white; font-size: 1.2rem; }
+.highlight pre, .highlight pre.highlight code { background-color: rgb(34, 34, 34); color: white; font-size: 1.2rem; }
 .highlight pre.highlight code { border: none; padding: none; };
-.highlight .hll { background-color: #272822; }
+.highlight .hll { background-color: rgb(34, 34, 34); }
 .highlight .c { color: #75715e } /* Comment */
 .highlight .err { color: #960050; background-color: #1e0010 } /* Error */
 .highlight .k { color: #66d9ef } /* Keyword */
