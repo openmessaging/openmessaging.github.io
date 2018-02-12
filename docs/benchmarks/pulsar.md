@@ -8,10 +8,10 @@ This tutorial shows you how to run OpenMessaging [benchmarks](..) for [Apache Pu
 
 ## Initial setup
 
-To being, you'll need to clone the [`benchmark`](https://github.com/openmessaging/benchmark) repo from the [`openmessaging`](https://github.com/openmessaging) organization on [GitHub](https://github.com):
+To being, you'll need to clone the [`benchmark`](https://github.com/openmessaging/openmessaging-benchmark) repo from the [`openmessaging`](https://github.com/openmessaging) organization on [GitHub](https://github.com):
 
 ```bash
-$ git clone https://github.com/openmessaging/benchmark
+$ git clone https://github.com/openmessaging/openmessaging-benchmark
 $ cd benchmarks
 ```
 
