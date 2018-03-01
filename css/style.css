@@ -934,11 +934,12 @@ body.screenshot {
   padding: 0;
 }
 .modBlogPost.big blockquote p {
-  color: #ccc;
+  color: rgb(153, 153, 153);;
   font-style: italic;
   letter-spacing: 1px;
   font-size: 1.7rem;
-  padding: 0 20px;
+  padding: 0 0 0 15px;
+  border-left: 2px solid rgb(153, 153, 153);
 }
 
 .modBlogPost.masonry {

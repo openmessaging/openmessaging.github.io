@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>OpenMessaging</title>
-    <description>OpenMessaging is cloud-oriented and vendor-neutral, provides industry guidelines for areas of finance, e-commerce, IoT and big-data, and aimed to develop messaging and streaming applications across heterogeneous systems and platforms.
+    <description>OpenMessaging is a cloud-oriented and vendor-neutral open standard for messaging, providing industry guidelines for areas such as finance, e-commerce, IoT and Big Data and oriented toward furthering messaging and streaming applications across heterogeneous systems and platforms.
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 02 Nov 2017 03:06:39 +0000</pubDate>
-    <lastBuildDate>Thu, 02 Nov 2017 03:06:39 +0000</lastBuildDate>
-    <generator>Jekyll v3.6.2</generator>
+    <pubDate>Thu, 01 Mar 2018 09:49:49 +0000</pubDate>
+    <lastBuildDate>Thu, 01 Mar 2018 09:49:49 +0000</lastBuildDate>
+    <generator>Jekyll v3.7.2</generator>
     
       <item>
         <title>OpenMessaging: Building an Open Standard for Distributed Messaging</title>
@@ -49,8 +49,8 @@
 &lt;p&gt;News Source: &lt;a href=&quot;https://www.linuxfoundation.org/blog/building-open-standard-distributed-messaging-introducing-openmessaging/&quot;&gt;Building an Open Standard for Distributed Messaging: Introducing OpenMessaging&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 10 Oct 2017 00:00:00 +0000</pubDate>
-        <link>/news/2017/10/10/openMessaging-launches-with-linux-foundation.html</link>
-        <guid isPermaLink="true">/news/2017/10/10/openMessaging-launches-with-linux-foundation.html</guid>
+        <link>/news/2017/10/10/openMessaging-launches-with-linux-foundation/</link>
+        <guid isPermaLink="true">/news/2017/10/10/openMessaging-launches-with-linux-foundation/</guid>
         
         
         <category>news</category>
@@ -122,8 +122,8 @@ Queue is a little sub set of a Topic in most cases.
 Create or destroy a Queue is easy and producer irrelevant.&lt;/p&gt;
 </description>
         <pubDate>Tue, 12 Sep 2017 00:00:00 +0000</pubDate>
-        <link>/design/2017/09/12/openmessaging-domain-architecture-v0.1.html</link>
-        <guid isPermaLink="true">/design/2017/09/12/openmessaging-domain-architecture-v0.1.html</guid>
+        <link>/design/2017/09/12/openmessaging-domain-architecture-v0.1/</link>
+        <guid isPermaLink="true">/design/2017/09/12/openmessaging-domain-architecture-v0.1/</guid>
         
         
         <category>design</category>
