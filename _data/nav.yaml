@@ -5,26 +5,26 @@
   section_id: document
   children:
   - name: Benchmarks
-    path: /docs/benchmarks
+    path: docs/benchmarks
     subchildren:
     - name: Intro
-      path: /docs/benchmarks
+      path: docs/benchmarks
     - name: Apache Kafka
-      path: /docs/benchmarks/kafka
+      path: docs/benchmarks/kafka
     - name: Apache Pulsar
-      path: /docs/benchmarks/pulsar
+      path: docs/benchmarks/pulsar
   - name: Java APIs
     path: openmessaging-java
 - name: Blog
-  path: /blog
+  path: blog
   section_id: blog
 - name: Community
   section_id: community
   children:
    - name: Charter
-     path: /charter
+     path: charter
    - name: Contribution
-     path: /contribution
+     path: contribution
 #- name: About
 #  path: about.html
 #  section_id: about
