@@ -22,12 +22,12 @@ OpenMessaging benchmarking suites are currently available for the following syst
 * [Apache Kafka](https://kafka.apache.org)
 * [Apache Pulsar](https://pulsar.incubator.apache.org)
 
-> Benchmarking suites for [RocketMQ](https://rocketmq.apache.org) and [RabbitMQ](https://www.rabbitmq.com) will be available soon.
+> Benchmarking suites for [Apache RocketMQ](https://rocketmq.apache.org) and [RabbitMQ](https://www.rabbitmq.com) will be available soon.
 
 For each platform, the benchmarking suite includes easy-to-use scripts for deploying that platform on [Amazon Web Services](https://aws.amazon.com) (AWS) and then running benchmarks upon deployment. For end-to-end instructions, see platform-specific docs for:
 
-* [Kafka](../benchmarks/kafka)
-* [Pulsar](../benchmarks/pulsar)
+* [Apache Kafka](../benchmarks/kafka)
+* [Apache Pulsar](../benchmarks/pulsar)
 
 ## Benchmarking workloads
 
