@@ -26,8 +26,8 @@ OpenMessaging benchmarking suites are currently available for the following syst
 
 For each platform, the benchmarking suite includes easy-to-use scripts for deploying that platform on [Amazon Web Services](https://aws.amazon.com) (AWS) and then running benchmarks upon deployment. For end-to-end instructions, see platform-specific docs for:
 
-* [Kafka](../benchmarks/kafka)
-* [Pulsar](../benchmarks/pulsar)
+* [Kafka](/docs/benchmarks/kafka)
+* [Pulsar](/docs/benchmarks/pulsar)
 
 ## Benchmarking workloads
 
