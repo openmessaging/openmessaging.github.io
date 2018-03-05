@@ -155,7 +155,7 @@ The instructions [above](#single-client-mode) show you how to run the benchmarks
 
 ```bash
 $ sudo bin/benchmark \
-  --drivers driver-kafka/kafka-exactly-once.yaml \
+  --drivers driver-pulsar/pulsar-exactly-once.yaml \
   --workers-file workers.yaml \ # or -wf workers.yaml
   workloads/*.yaml
 ```
@@ -178,3 +178,13 @@ The OpenMessaging benchmarking suite stores results in JSON files in the `/opt/b
 ```bash
 $ scp -i ~/.ssh/pulsar_aws ec2-user@$(terraform output client_ssh_host):/opt/benchmark/*.json .
 ```
+
+## Tearing down your benchmarking infrastructure
+
+Once you're finished running your benchmarks, you should tear down the AWS infrastructure you deployed for the sake of saving costs. You can do that with one command:
+
+```bash
+$ terraform destroy -force
+```
+
+Make sure to let the process run to completion (it could take several minutes). Once the tear down is complete, all AWS resources that you created for the Pulsar benchmarking suite will have been removed.
