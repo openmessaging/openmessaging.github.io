@@ -183,5 +183,15 @@ $ sudo bin/benchmark \
 The OpenMessaging benchmarking suite stores results in JSON files in the `/opt/benchmark` folder on the client host from which the benchmarks are run. You can download those results files onto your local machine using [`scp`](https://linux.die.net/man/1/scp). You can download all generated JSON results files using this command:
 
 ```bash
-$ scp -i ~/.ssh/pulsar_aws ec2-user@$(terraform output client_ssh_host):/opt/benchmark/*.json .
+$ scp -i ~/.ssh/kafka_aws ec2-user@$(terraform output client_ssh_host):/opt/benchmark/*.json .
 ```
+
+## Tearing down your benchmarking infrastructure
+
+Once you're finished running your benchmarks, you should tear down the AWS infrastructure you deployed for the sake of saving costs. You can do that with one command:
+
+```bash
+$ terraform destroy -force
+```
+
+Make sure to let the process run to completion (it could take several minutes). Once the tear down is complete, all AWS resources that you created for the Kafka benchmarking suite will have been removed.
