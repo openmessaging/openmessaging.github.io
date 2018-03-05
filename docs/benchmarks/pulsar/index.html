@@ -365,7 +365,7 @@
 <p>The instructions <a href="#single-client-mode">above</a> show you how to run the benchmarks from a single client. You can run the benchmarks from multiple clients simultaneously, in “distributed” mode, by adding the <code class="highlighter-rouge">--workers-file workers.yaml</code> when you run the benchmarks. Here’s an example:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>bin/benchmark <span class="se">\</span>
-  <span class="nt">--drivers</span> driver-kafka/kafka-exactly-once.yaml <span class="se">\</span>
+  <span class="nt">--drivers</span> driver-pulsar/pulsar-exactly-once.yaml <span class="se">\</span>
   <span class="nt">--workers-file</span> workers.yaml <span class="se">\ </span><span class="c"># or -wf workers.yaml</span>
   workloads/<span class="k">*</span>.yaml
 </code></pre></div></div>
@@ -388,6 +388,15 @@
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>scp <span class="nt">-i</span> ~/.ssh/pulsar_aws ec2-user@<span class="k">$(</span>terraform output client_ssh_host<span class="k">)</span>:/opt/benchmark/<span class="k">*</span>.json <span class="nb">.</span>
 </code></pre></div></div>
+
+<h2 id="tearing-down-your-benchmarking-infrastructure">Tearing down your benchmarking infrastructure</h2>
+
+<p>Once you’re finished running your benchmarks, you should tear down the AWS infrastructure you deployed for the sake of saving costs. You can do that with one command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>terraform destroy <span class="nt">-force</span>
+</code></pre></div></div>
+
+<p>Make sure to let the process run to completion (it could take several minutes). Once the tear down is complete, all AWS resources that you created for the Pulsar benchmarking suite will have been removed.</p>
 
       </div>
     </div>

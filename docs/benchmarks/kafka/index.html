@@ -397,8 +397,17 @@
 
 <p>The OpenMessaging benchmarking suite stores results in JSON files in the <code class="highlighter-rouge">/opt/benchmark</code> folder on the client host from which the benchmarks are run. You can download those results files onto your local machine using <a href="https://linux.die.net/man/1/scp"><code class="highlighter-rouge">scp</code></a>. You can download all generated JSON results files using this command:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>scp <span class="nt">-i</span> ~/.ssh/pulsar_aws ec2-user@<span class="k">$(</span>terraform output client_ssh_host<span class="k">)</span>:/opt/benchmark/<span class="k">*</span>.json <span class="nb">.</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>scp <span class="nt">-i</span> ~/.ssh/kafka_aws ec2-user@<span class="k">$(</span>terraform output client_ssh_host<span class="k">)</span>:/opt/benchmark/<span class="k">*</span>.json <span class="nb">.</span>
 </code></pre></div></div>
+
+<h2 id="tearing-down-your-benchmarking-infrastructure">Tearing down your benchmarking infrastructure</h2>
+
+<p>Once you’re finished running your benchmarks, you should tear down the AWS infrastructure you deployed for the sake of saving costs. You can do that with one command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>terraform destroy <span class="nt">-force</span>
+</code></pre></div></div>
+
+<p>Make sure to let the process run to completion (it could take several minutes). Once the tear down is complete, all AWS resources that you created for the Kafka benchmarking suite will have been removed.</p>
 
       </div>
     </div>
