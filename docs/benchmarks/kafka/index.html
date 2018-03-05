@@ -393,6 +393,13 @@
   workloads/<span class="k">*</span>.yaml
 </code></pre></div></div>
 
+<h2 id="downloading-your-benchmarking-results">Downloading your benchmarking results</h2>
+
+<p>The OpenMessaging benchmarking suite stores results in JSON files in the <code class="highlighter-rouge">/opt/benchmark</code> folder on the client host from which the benchmarks are run. You can download those results files onto your local machine using <a href="https://linux.die.net/man/1/scp"><code class="highlighter-rouge">scp</code></a>. You can download all generated JSON results files using this command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>scp <span class="nt">-i</span> ~/.ssh/pulsar_aws ec2-user@<span class="k">$(</span>terraform output client_ssh_host<span class="k">)</span>:/opt/benchmark/<span class="k">*</span>.json <span class="nb">.</span>
+</code></pre></div></div>
+
       </div>
     </div>
     <div class="large-3 columns" id="sidebar">
