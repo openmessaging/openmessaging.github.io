@@ -63,7 +63,7 @@ Resource | Description | Count
 :--------|:------------|:-----
 Pulsar instances | The VMs on which a Pulsar broker will run | 3
 ZooKeeper instances | The VMs on which a ZooKeeper node will run | 3
-Client instance | The VM from which the benchmarking suite itself will be run | 1
+Client instance | The VM from which the benchmarking suite itself will be run | 4
 
 When you run `terraform apply`, you will be prompted to type `yes`. Type `yes` to continue with the installation or anything else to quit.
 
