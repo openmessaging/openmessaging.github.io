@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>OpenMessaging Domain Architecture V0.1</title>
-  <meta name="description" content="OpenMessaging has released first alpha version recently, Apache RocketMQ has provided a partial implementation for OpenMessaging-0.1.0-alpha.">
+  <title>Helping Enterprises Evaluate Performance of Messaging Solutions</title>
+  <meta name="description" content="The acceleration of microservice-based and cloud-based applications has put a growing focus on how data is connected to services, applications and users.">
 
   <link rel="stylesheet" href="/css/foundation.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -55,7 +55,7 @@
   <script src="/javascripts/imagesloaded.pkgd.min.js" type="text/javascript"></script>
   <script src="/javascripts/slick.min.js" type="text/javascript"></script>
 
-  <link rel="canonical" href="/design/2017/09/12/openmessaging-domain-architecture-v0.1/">
+  <link rel="canonical" href="/design/2018/03/08/openmessaging-helping-enterprises-evaluate-performance-of-messaging-solutions/">
   <link rel="alternate" type="application/rss+xml" title="OpenMessaging" href="/feed.xml" />
 </head>
 
@@ -155,16 +155,14 @@
       <div class='mod modBlogPost big no_bg'>
   <div class='images'>
     
-      <div class='image'><img alt="" src="/images/@blog/oms-domain-design-v0.1.png" /></div>
-    
   </div>
   <div class='content'>
     <p class='info'>
-      <span>September 12, 2017</span>
+      <span>March 08, 2018</span>
       /
       <span>
         by
-        <a href="">yukon</a>
+        <a href="">Zibby Keaton</a>
       </span>
       /
       <span>
@@ -179,68 +177,25 @@
         <a href="#">4 commetns</a>
       </span> -->
     </p>
-    <h3><a href="/design/2017/09/12/openmessaging-domain-architecture-v0.1/">OpenMessaging Domain Architecture V0.1</a></h3>
-    <p>Above is the domain architecture of Open Messaging, see <a href="/openmessaging-java">JavaDoc</a> for details.</p>
+    <h3><a href="/design/2018/03/08/openmessaging-helping-enterprises-evaluate-performance-of-messaging-solutions/">Helping Enterprises Evaluate Performance of Messaging Solutions</a></h3>
+    <p>The acceleration of microservice-based and cloud-based applications has put a growing focus on how data is connected to services, applications and users. This focus has led to a number of new innovations and new products that support messaging and queueing needs. It has also contributed to increased demands on messaging and queuing solutions, making performance and scalability critical to success.</p>
 
-<p>OpenMessaging has released first <a href="https://search.maven.org/#search%7Cga%7C1%7Copenmessaging">alpha version</a> recently, Apache RocketMQ has provided a <a href="https://github.com/apache/incubator-rocketmq/tree/openmessaging-impl/openmessaging">partial implementation</a> for OpenMessaging-0.1.0-alpha.</p>
+<p>OpenMessaging was created to ensure that users could confidently choose and deploy the distributed messaging technology that best meets their specific requirements. Since its launch last fall, OpenMessaging has enabled steady progress on the implementation and adoption of open protocols and connectivity for messaging solutions allowing users to adopt messaging solutions without the burden and complexity of incompatibility and proprietary interfaces.</p>
 
-<h2 id="namespace">Namespace</h2>
+<p>Earlier this week, we announced the addition of a multi-platform benchmark to OpenMessaging, which adds a valuable new dimension to OpenMessaging. The growing demands on messaging solutions make performance and scalability critically important criteria for choosing messaging technology. However, there are no multi-platform tools based on open standards to aid organizations in assessing performance of messaging and queuing solutions. This benchmark fills the need for a toolkit that makes it easy to measure and compare performance of these solutions.</p>
 
-<p>Namespace likes a cgroup namespace, to create an isolated space with security guarantee. Each namespace has its own set of producer, consumer, topic, queue and so on. OpenMessaging uses MessagingAccessPoint to access/read/write the resources of a specified Namespace.</p>
+<p>The OpenMessaging benchmark is designed to assess performance characteristics that apply to real-world scenarios including end-to-end latency, throughput, and scalability of topics and partitions. It is provided as an open, customizable, and extensible kit giving users the ability to tailor it to help assess performance based on their specific requirements.</p>
 
-<h2 id="producer">Producer</h2>
+<h2 id="members-and-community-weigh-in">Members and Community Weigh In</h2>
 
-<p>OpenMessaging defines two kinds of Producer: Producer and SequenceProducer.</p>
+<p>“With the variety of messaging solutions available, including open source solutions such as Apache Kafka, Apache Pulsar, and Apache RocketMQ, the lack of an industry-wide standard for messaging makes evaluating solutions difficult,” said Von Gosling, Alibaba Senior Architect, Apache RocketMQ Co-Creator and PMC member. “To address this, Alibaba and other leading organizations have launched the OpenMessaging project within the Linux Foundation and have designed an OpenMessaging benchmark to compare different messaging systems in many dimensions, including common messaging use cases and transactional scenarios. We hope to see more and more messaging vendors join this open effort to make it the standard for how messaging performance is measured and compared.”</p>
 
-<ul>
-  <li>Producer, provides various send methods to send a message to a specified destination, Topic or Queue. Three ways are supported: synchronous, asynchronous and oneway.</li>
-  <li>SequenceProducer, focuses on speed, the implementation can adopt the batch way, send many messages and then commit at once.</li>
-</ul>
+<p>“Performance and scalability are crucial criteria when choosing a messaging solution, but to date customers have been poorly served when it comes to tools for evaluating their options,” said Matteo Merli, co-founder of Streamlio, a founding member of OpenMessaging. “The new OpenMessaging benchmark provides customers with the tools they need to evaluate and choose the right solution to meet their performance and scalability demands, both now and in the future.”</p>
 
-<h2 id="consumer">Consumer</h2>
+<p>This benchmark is another great example of how OpenMessaging is providing users the standard-based tools and solutions they need to confidently select and deploy messaging solutions. As part of the OpenMessaging project, the OpenMessaging community will continue to enhance and extend this benchmark to meet industry needs. For more information and to access the benchmark kit as well as contribute to its future development, you can visit [github.com/openmessaging/openmessaging-benchmark] (https://github.com/openmessaging/openmessaging-benchmark).</p>
 
-<p>OpenMessaging defines two kinds of Consumer: PullConsumer, PushConsumer and StreamingConsumer. Each consumer only supports consume messages from the Queue.</p>
+<p>To learn more about OpenMessaging and to join the OpenMessaging community, visit [http://openmessaging.cloud] (http://openmessaging.cloud).</p>
 
-<ul>
-  <li>PullConsumer, pulls messages from the specified queue, supports submit the consume result by acknowledgement at any time. One PullConsumer only can pull messages from one fixed queue.</li>
-  <li>PushConsumer, receives messages from multiple queues, these messages are pushed from the MOM server. PushConsumer can attach to multiple queues with separate MessageListener and submit consume result through ReceivedMessageContext at any time.</li>
-  <li>StreamingConsumer, a brand-new consumer type, a stream-oriented consumer, to integrate messaging system with Streaming/BigData related platforms easily. StreamingConsumer supports consume messages from partitions of a specified queue like a iterator.</li>
-</ul>
-
-<h2 id="topic-queue-and-routing">Topic Queue and Routing</h2>
-
-<p>These three concepts are closely connected, although Topic and Queue have different responsibilities, they are confusing.
-Topic</p>
-
-<ul>
-  <li>Topic, the carrier of origin messages, is responsibility for holding messages. The distribution and sequential of messages in Topic is undefined.</li>
-</ul>
-
-<h2 id="routing">Routing</h2>
-
-<p>The messages in Topic are original, waiting for processing, which always can’t arouse the interests of consumers. In a word, the messages in Topic is producer-oriented, not consumer–oriented.</p>
-
-<p>So the Routing is in charge of processing the original messages in Topic, and routing to Queue. Each Routing has a operator pipeline, consists of  a series of operators. The messages will flow through the operator pipeline from Topic and Queue.</p>
-
-<p>A  operator is used to handle the flowing messages in Routing. There are many kinds of  operator, expression operator, deduplicator operator, joiner operator, filter operator, rpc operator, and so on.</p>
-
-<p>What’s more? Routing can cross the network, message can be routed from a network partition to another partition.</p>
-
-<h2 id="queue">Queue</h2>
-
-<p>The messages have been routed to Queue, now can be consumed by consumers.
-It is noteworthy that a Queue should be divided into partitions, a message will be routed to a specified partition by MessageHeader#SHARDING_KEY.</p>
-
-<p>Queue also accepts messages from Producer directly, sometimes, we want to the shortest path from Producer to Consumer, for performance.</p>
-
-<h2 id="topic-vs-queue">Topic vs. Queue</h2>
-
-<p>Both Topic and Queue are the carrier of messages.
-Topic is producer-oriented, while Queue is consumer-oriented.
-Messages in Topic are from Producer, while messages in Queue is from Topic or Producer.
-Queue is divided into partitions, while the arch of Topic is undefined. 
-Queue is a little sub set of a Topic in most cases.
-Create or destroy a Queue is easy and producer irrelevant.</p>
 
   </div>
 </div>
