@@ -6,8 +6,8 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 09 Mar 2018 16:20:13 +0000</pubDate>
-    <lastBuildDate>Fri, 09 Mar 2018 16:20:13 +0000</lastBuildDate>
+    <pubDate>Fri, 09 Mar 2018 16:58:10 +0000</pubDate>
+    <lastBuildDate>Fri, 09 Mar 2018 16:58:10 +0000</lastBuildDate>
     <generator>Jekyll v3.7.2</generator>
     
       <item>
@@ -26,9 +26,9 @@
 
 &lt;p&gt;“Performance and scalability are crucial criteria when choosing a messaging solution, but to date customers have been poorly served when it comes to tools for evaluating their options,” said Matteo Merli, co-founder of Streamlio, a founding member of OpenMessaging. “The new OpenMessaging benchmark provides customers with the tools they need to evaluate and choose the right solution to meet their performance and scalability demands, both now and in the future.”&lt;/p&gt;
 
-&lt;p&gt;This benchmark is another great example of how OpenMessaging is providing users the standard-based tools and solutions they need to confidently select and deploy messaging solutions. As part of the OpenMessaging project, the OpenMessaging community will continue to enhance and extend this benchmark to meet industry needs. For more information and to access the benchmark kit as well as contribute to its future development, you can visit [github.com/openmessaging/openmessaging-benchmark] (https://github.com/openmessaging/openmessaging-benchmark).&lt;/p&gt;
+&lt;p&gt;This benchmark is another great example of how OpenMessaging is providing users the standard-based tools and solutions they need to confidently select and deploy messaging solutions. As part of the OpenMessaging project, the OpenMessaging community will continue to enhance and extend this benchmark to meet industry needs. For more information and to access the benchmark kit as well as contribute to its future development, you can visit https://github.com/openmessaging/openmessaging-benchmark.&lt;/p&gt;
 
-&lt;p&gt;To learn more about OpenMessaging and to join the OpenMessaging community, visit [http://openmessaging.cloud] (http://openmessaging.cloud).&lt;/p&gt;
+&lt;p&gt;To learn more about OpenMessaging and to join the OpenMessaging community, visit https://openmessaging.cloud.&lt;/p&gt;
 
 </description>
         <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
