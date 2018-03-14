@@ -71,7 +71,7 @@
       </a>
     </div>
 </div>
-<div class='contain-to-grid sticky'>
+<div class='navbar contain-to-grid sticky'>
   <nav class='top-bar' data-options='sticky_on: large' data-topbar=''>
     <ul class='title-area'>
       <li class='name'>
@@ -148,6 +148,7 @@
     </section>
   </nav>
 </div>
+
 
     <div id='main' role='main'>
       <div class="full">
@@ -306,15 +307,7 @@
   <p>The instructions immediately below are for running the benchmarks from a single host, but you  can also run the benchmarks in <a href="#distributed-mode">distributed mode</a> (from multiple clients simultaneously).</p>
 </blockquote>
 
-<p>Once you’ve successfully SSHed into the client host, you can run all <a href="../#benchmarking-workloads">available benchmark workloads</a> like this:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> /opt/benchmark
-<span class="nv">$ </span><span class="nb">sudo </span>bin/benchmark <span class="se">\</span>
-  <span class="nt">--drivers</span> driver-pulsar/pulsar.yaml <span class="se">\</span>
-  workloads/<span class="k">*</span>.yaml
-</code></pre></div></div>
-
-<p>You can also run specific workloads in the <code class="highlighter-rouge">workloads</code> folder. Here’s an example:</p>
+<p>Once you’ve successfully SSHed into the client host, you can run any of the <a href="../#benchmarking-workloads">existing benchmarking workloads</a> by specifying the YAML file for that workload when running the <code class="highlighter-rouge">benchmark</code> executable. All workloads are in the <code class="highlighter-rouge">workloads</code> folder. Here’s an example:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>bin/benchmark <span class="se">\</span>
   <span class="nt">--drivers</span> driver-pulsar/pulsar.yaml <span class="se">\</span>
@@ -345,14 +338,7 @@
   </tbody>
 </table>
 
-<p>The example used the “standard” mode as configured in <code class="highlighter-rouge">driver-pulsar/pulsar.yaml</code>. To run all available benchmark workloads in “effectively once” mode:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>bin/benchmark <span class="se">\</span>
-  <span class="nt">--drivers</span> driver-pulsar/pulsar-effectively-once.yaml <span class="se">\</span>
-  workloads/<span class="k">*</span>.yaml
-</code></pre></div></div>
-
-<p>Here’s an example of running a specific benchmarking workload in effectively once mode:</p>
+<p>The example used the “standard” mode as configured in <code class="highlighter-rouge">driver-pulsar/pulsar.yaml</code>. Here’s an example of running a benchmarking workload in effectively once mode:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>bin/benchmark <span class="se">\</span>
   <span class="nt">--drivers</span> driver-pulsar/pulsar-effectively-once.yaml <span class="se">\</span>
@@ -367,7 +353,7 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>bin/benchmark <span class="se">\</span>
   <span class="nt">--drivers</span> driver-pulsar/pulsar-exactly-once.yaml <span class="se">\</span>
   <span class="nt">--workers-file</span> workers.yaml <span class="se">\ </span><span class="c"># or -wf workers.yaml</span>
-  workloads/<span class="k">*</span>.yaml
+  workloads/1-topic-16-partitions-1kb.yaml
 </code></pre></div></div>
 
 <blockquote>
@@ -379,7 +365,7 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>bin/benchmark <span class="se">\</span>
   <span class="nt">--drivers</span> driver-pulsar/pulsar-exactly-once.yaml <span class="se">\</span>
   <span class="nt">--workers</span> 1.2.3.4:8080,4.5.6.7:8080 <span class="se">\ </span><span class="c"># or -w 1.2.3.4:8080,4.5.6.7:8080</span>
-  workloads/<span class="k">*</span>.yaml
+  workloads/1-topic-16-partitions-1kb.yaml
 </code></pre></div></div>
 
 <h2 id="downloading-your-benchmarking-results">Downloading your benchmarking results</h2>
