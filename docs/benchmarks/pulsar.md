@@ -107,6 +107,8 @@ $ ssh -i ~/.ssh/pulsar_aws ec2-user@$(terraform output client_ssh_host)
 ## Running the benchmarks from the client host
 
 > The instructions immediately below are for running the benchmarks from a single host, but you  can also run the benchmarks in [distributed mode](#distributed-mode) (from multiple clients simultaneously).
+>
+> The benchmark scripts are copied under `/opt/benchmark`. Following commands are issues at working directory `/opt/benchmark`.
 
 Once you've successfully SSHed into the client host, you can run any of the [existing benchmarking workloads](../#benchmarking-workloads) by specifying the YAML file for that workload when running the `benchmark` executable. All workloads are in the `workloads` folder. Here's an example:
 
@@ -138,7 +140,7 @@ The instructions [above](#single-client-mode) show you how to run the benchmarks
 
 ```bash
 $ sudo bin/benchmark \
-  --drivers driver-pulsar/pulsar-exactly-once.yaml \
+  --drivers driver-pulsar/pulsar-effectively-once.yaml \
   --workers-file workers.yaml \ # or -wf workers.yaml
   workloads/1-topic-16-partitions-1kb.yaml
 ```
@@ -149,7 +151,7 @@ You can also specify a comma-separated list of client hosts using the `--workers
 
 ```bash
 $ sudo bin/benchmark \
-  --drivers driver-pulsar/pulsar-exactly-once.yaml \
+  --drivers driver-pulsar/pulsar-effectively-once.yaml \
   --workers 1.2.3.4:8080,4.5.6.7:8080 \ # or -w 1.2.3.4:8080,4.5.6.7:8080
   workloads/1-topic-16-partitions-1kb.yaml
 ```
