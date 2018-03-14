@@ -12,7 +12,7 @@ To being, you'll need to clone the [`benchmark`](https://github.com/openmessagin
 
 ```bash
 $ git clone https://github.com/openmessaging/openmessaging-benchmark
-$ cd benchmarks
+$ cd openmessaging-benchmark
 ```
 
 You'll also need to have [Maven](https://maven.apache.org/install.html) installed.
