@@ -108,7 +108,7 @@ $ ssh -i ~/.ssh/pulsar_aws ec2-user@$(terraform output client_ssh_host)
 
 > The instructions immediately below are for running the benchmarks from a single host, but you  can also run the benchmarks in [distributed mode](#distributed-mode) (from multiple clients simultaneously).
 >
-> The benchmark scripts are copied under `/opt/benchmark`. Following commands are issues at working directory `/opt/benchmark`.
+> The benchmark scripts are copied under `/opt/benchmark`. Following commands are issued at working directory `/opt/benchmark`.
 
 Once you've successfully SSHed into the client host, you can run any of the [existing benchmarking workloads](../#benchmarking-workloads) by specifying the YAML file for that workload when running the `benchmark` executable. All workloads are in the `workloads` folder. Here's an example:
 
