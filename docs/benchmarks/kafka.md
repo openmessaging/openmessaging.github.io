@@ -49,6 +49,8 @@ When prompted to enter a passphrase, simply hit **Enter** twice. Then, make sure
 $ ls ~/.ssh/kafka_aws*
 ```
 
+### Create resources using Terraform
+
 With SSH keys in place, you can create the necessary AWS resources using just a few Terraform commands:
 
 ```bash
@@ -103,10 +105,7 @@ In the [output](https://www.terraform.io/intro/getting-started/outputs.html) pro
 $ ssh -i ~/.ssh/kafka_aws ec2-user@$(terraform output client_ssh_host)
 ```
 
-<a id="single-client-mode"></a>
-## Running the benchmarks from the client host
-
-> The instructions immediately below are for running the benchmarks from a single host, but you  can also run the benchmarks in [distributed mode](#distributed-mode) (from multiple clients simultaneously).
+## Running the benchmarks from the client hosts
 
 Once you've successfully SSHed into the client host, you can run any of the [existing benchmarking workloads](../#benchmarking-workloads) by specifying the YAML file for that workload when running the `benchmark` executable. All workloads are in the `workloads` folder. Here's an example:
 
@@ -115,6 +114,8 @@ $ sudo bin/benchmark \
   --drivers driver-kafka/kafka.yaml \
   workloads/1-topic-16-partitions-1kb.yaml
 ```
+
+> Although benchmarks are run *from* a specific client host, the benchmarks are run in distributed mode, across multiple client hosts.
 
 There are multiple Kafka "modes" for which you can run benchmarks. Each mode has its own YAML configuration file in the `driver-kafka` folder.
 
@@ -138,21 +139,9 @@ $ sudo bin/benchmark \
   workloads/1-topic-16-partitions-1kb.yaml
 ```
 
-<a id="distributed-mode"></a>
-### Running the benchmarks in distributed mode (multiple clients)
+### Specify client hosts
 
-The instructions [above](#single-client-mode) show you how to run the benchmarks from a single client. You can run the benchmarks from multiple clients simultaneously, in "distributed" mode, by adding the `--workers-file workers.yaml` when you run the benchmarks. Here's an example:
-
-```bash
-$ sudo bin/benchmark \
-  --drivers driver-kafka/kafka-exactly-once.yaml \
-  --workers-file workers.yaml \ # or -wf workers.yaml
-  workloads/1-topic-16-partitions-1kb.yaml
-```
-
-> Ansible automatically creates a `workers.yaml` file in the `/opt/benchmark` directory during the deployment process. This file contains a list of client hosts created by Terraform. You won't need to modify this file.
-
-You can also specify a comma-separated list of client hosts using the `--workers` flag:
+By default, benchmarks will be run from the set of hosts created by Terraform. You can also specify a comma-separated list of client hosts using the `--workers` flag (or `-w` for short):
 
 ```bash
 $ sudo bin/benchmark \
