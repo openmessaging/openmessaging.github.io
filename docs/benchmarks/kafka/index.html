@@ -203,6 +203,8 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">ls</span> ~/.ssh/kafka_aws<span class="k">*</span>
 </code></pre></div></div>
 
+<h3 id="create-resources-using-terraform">Create resources using Terraform</h3>
+
 <p>With SSH keys in place, you can create the necessary AWS resources using just a few Terraform commands:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>driver-kafka/deploy
@@ -300,12 +302,7 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh <span class="nt">-i</span> ~/.ssh/kafka_aws ec2-user@<span class="k">$(</span>terraform output client_ssh_host<span class="k">)</span>
 </code></pre></div></div>
 
-<p><a id="single-client-mode"></a></p>
-<h2 id="running-the-benchmarks-from-the-client-host">Running the benchmarks from the client host</h2>
-
-<blockquote>
-  <p>The instructions immediately below are for running the benchmarks from a single host, but you  can also run the benchmarks in <a href="#distributed-mode">distributed mode</a> (from multiple clients simultaneously).</p>
-</blockquote>
+<h2 id="running-the-benchmarks-from-the-client-hosts">Running the benchmarks from the client hosts</h2>
 
 <p>Once you’ve successfully SSHed into the client host, you can run any of the <a href="../#benchmarking-workloads">existing benchmarking workloads</a> by specifying the YAML file for that workload when running the <code class="highlighter-rouge">benchmark</code> executable. All workloads are in the <code class="highlighter-rouge">workloads</code> folder. Here’s an example:</p>
 
@@ -313,6 +310,10 @@
   <span class="nt">--drivers</span> driver-kafka/kafka.yaml <span class="se">\</span>
   workloads/1-topic-16-partitions-1kb.yaml
 </code></pre></div></div>
+
+<blockquote>
+  <p>Although benchmarks are run <em>from</em> a specific client host, the benchmarks are run in distributed mode, across multiple client hosts.</p>
+</blockquote>
 
 <p>There are multiple Kafka “modes” for which you can run benchmarks. Each mode has its own YAML configuration file in the <code class="highlighter-rouge">driver-kafka</code> folder.</p>
 
@@ -356,22 +357,9 @@
   workloads/1-topic-16-partitions-1kb.yaml
 </code></pre></div></div>
 
-<p><a id="distributed-mode"></a></p>
-<h3 id="running-the-benchmarks-in-distributed-mode-multiple-clients">Running the benchmarks in distributed mode (multiple clients)</h3>
+<h3 id="specify-client-hosts">Specify client hosts</h3>
 
-<p>The instructions <a href="#single-client-mode">above</a> show you how to run the benchmarks from a single client. You can run the benchmarks from multiple clients simultaneously, in “distributed” mode, by adding the <code class="highlighter-rouge">--workers-file workers.yaml</code> when you run the benchmarks. Here’s an example:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>bin/benchmark <span class="se">\</span>
-  <span class="nt">--drivers</span> driver-kafka/kafka-exactly-once.yaml <span class="se">\</span>
-  <span class="nt">--workers-file</span> workers.yaml <span class="se">\ </span><span class="c"># or -wf workers.yaml</span>
-  workloads/1-topic-16-partitions-1kb.yaml
-</code></pre></div></div>
-
-<blockquote>
-  <p>Ansible automatically creates a <code class="highlighter-rouge">workers.yaml</code> file in the <code class="highlighter-rouge">/opt/benchmark</code> directory during the deployment process. This file contains a list of client hosts created by Terraform. You won’t need to modify this file.</p>
-</blockquote>
-
-<p>You can also specify a comma-separated list of client hosts using the <code class="highlighter-rouge">--workers</code> flag:</p>
+<p>By default, benchmarks will be run from the set of hosts created by Terraform. You can also specify a comma-separated list of client hosts using the <code class="highlighter-rouge">--workers</code> flag (or <code class="highlighter-rouge">-w</code> for short):</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>bin/benchmark <span class="se">\</span>
   <span class="nt">--drivers</span> driver-kafka/kafka-exactly-once.yaml <span class="se">\</span>
