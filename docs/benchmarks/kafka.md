@@ -108,16 +108,7 @@ $ ssh -i ~/.ssh/kafka_aws ec2-user@$(terraform output client_ssh_host)
 
 > The instructions immediately below are for running the benchmarks from a single host, but you  can also run the benchmarks in [distributed mode](#distributed-mode) (from multiple clients simultaneously).
 
-Once you've successfully SSHed into the client host, you can run the benchmarks from a single client host like this:
-
-```bash
-$ cd /opt/benchmark
-$ sudo bin/benchmark \
-  --drivers driver-kafka/kafka.yaml \
-  workloads/*.yaml
-```
-
-You can also run specific workloads in the `workloads` folder. Here's an example:
+Once you've successfully SSHed into the client host, you can run any of the [existing benchmarking workloads](../#benchmarking-workloads) by specifying the YAML file for that workload when running the `benchmark` executable. All workloads are in the `workloads` folder. Here's an example:
 
 ```bash
 $ sudo bin/benchmark \
@@ -133,25 +124,17 @@ Standard | Kafka with message idempotence disabled (at-least-once semantics) | `
 Exactly once | Kafka with message idempotence enabled ("exactly-once" semantics) | `kafka-exactly-once.yaml`
 Sync | Kafka with durability enabled (all published messages synced to disk) | `kafka-sync.yaml`
 
-The example used the "standard" mode as configured in `driver-kafka/kafka.yaml`. To run all available benchmark workloads in "exactly once" or "sync" mode instead:
+The example used the "standard" mode as configured in `driver-kafka/kafka.yaml`. Here are some examples for the other modes:
 
 ```bash
 # Exactly once
 $ sudo bin/benchmark \
   --drivers driver-kafka/kafka-exactly-once.yaml \
-  workloads/*.yaml
+  workloads/1-topic-16-partitions-1kb.yaml
 
 # Sync
 $ sudo bin/benchmark \
   --drivers driver-kafka/kafka-sync.yaml \
-  workloads/*.yaml
-```
-
-Here's an example of running a specific benchmarking workload in exactly once mode:
-
-```bash
-$ sudo bin/benchmark \
-  --drivers driver-kafka/kafka-exactly-once.yaml \
   workloads/1-topic-16-partitions-1kb.yaml
 ```
 
@@ -164,7 +147,7 @@ The instructions [above](#single-client-mode) show you how to run the benchmarks
 $ sudo bin/benchmark \
   --drivers driver-kafka/kafka-exactly-once.yaml \
   --workers-file workers.yaml \ # or -wf workers.yaml
-  workloads/*.yaml
+  workloads/1-topic-16-partitions-1kb.yaml
 ```
 
 > Ansible automatically creates a `workers.yaml` file in the `/opt/benchmark` directory during the deployment process. This file contains a list of client hosts created by Terraform. You won't need to modify this file.
@@ -175,7 +158,7 @@ You can also specify a comma-separated list of client hosts using the `--workers
 $ sudo bin/benchmark \
   --drivers driver-kafka/kafka-exactly-once.yaml \
   --workers 1.2.3.4:8080,4.5.6.7:8080 \ # or -w 1.2.3.4:8080,4.5.6.7:8080
-  workloads/*.yaml
+  workloads/1-topic-16-partitions-1kb.yaml
 ```
 
 ## Downloading your benchmarking results
