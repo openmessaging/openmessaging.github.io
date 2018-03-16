@@ -304,6 +304,10 @@
 
 <h2 id="running-the-benchmarks-from-the-client-hosts">Running the benchmarks from the client hosts</h2>
 
+<blockquote>
+  <p>The benchmark scripts can be run from the /opt/benchmark working directory.</p>
+</blockquote>
+
 <p>Once you’ve successfully SSHed into the client host, you can run any of the <a href="../#benchmarking-workloads">existing benchmarking workloads</a> by specifying the YAML file for that workload when running the <code class="highlighter-rouge">benchmark</code> executable. All workloads are in the <code class="highlighter-rouge">workloads</code> folder. Here’s an example:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>bin/benchmark <span class="se">\</span>
@@ -351,7 +355,7 @@
 <p>By default, benchmarks will be run from the set of hosts created by Terraform. You can also specify a comma-separated list of client hosts using the <code class="highlighter-rouge">--workers</code> flag (or <code class="highlighter-rouge">-w</code> for short):</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>bin/benchmark <span class="se">\</span>
-  <span class="nt">--drivers</span> driver-pulsar/pulsar-exactly-once.yaml <span class="se">\</span>
+  <span class="nt">--drivers</span> driver-pulsar/pulsar-effectively-once.yaml <span class="se">\</span>
   <span class="nt">--workers</span> 1.2.3.4:8080,4.5.6.7:8080 <span class="se">\ </span><span class="c"># or -w 1.2.3.4:8080,4.5.6.7:8080</span>
   workloads/1-topic-16-partitions-1kb.yaml
 </code></pre></div></div>
