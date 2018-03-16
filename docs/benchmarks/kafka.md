@@ -107,6 +107,8 @@ $ ssh -i ~/.ssh/kafka_aws ec2-user@$(terraform output client_ssh_host)
 
 ## Running the benchmarks from the client hosts
 
+> The benchmark scripts can be run from the /opt/benchmark working directory.
+
 Once you've successfully SSHed into the client host, you can run any of the [existing benchmarking workloads](../#benchmarking-workloads) by specifying the YAML file for that workload when running the `benchmark` executable. All workloads are in the `workloads` folder. Here's an example:
 
 ```bash
