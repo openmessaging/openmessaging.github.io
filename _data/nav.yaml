@@ -1,5 +1,5 @@
 - name: Home
-  path: /
+  path: 
   section_id: home
 - name: Docs
   section_id: document
