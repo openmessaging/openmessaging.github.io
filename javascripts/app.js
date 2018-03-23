@@ -30,6 +30,13 @@ jQuery.extend({
 
 jQuery(document).ready(function() {
   jQuery('html').removeClass('no-js');
+
+  var topBarHeight = jQuery('.navbar').height();
+  var scrollOffset = -1 * (topBarHeight);
+  var shiftWindow = function() { scrollBy(0, scrollOffset) };
+  window.addEventListener("hashchange", shiftWindow);
+  window.addEventListener("pageshow", shiftWindow);
+  function load() { if (window.location.hash) shiftWindow(); }
 });
 
 jQuery(document).foundation();

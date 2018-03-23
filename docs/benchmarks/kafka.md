@@ -12,7 +12,7 @@ To being, you'll need to clone the [`benchmark`](https://github.com/openmessagin
 
 ```bash
 $ git clone https://github.com/openmessaging/openmessaging-benchmark
-$ cd benchmarks
+$ cd openmessaging-benchmark
 ```
 
 You'll also need to have [Maven](https://maven.apache.org/install.html) installed.
@@ -49,6 +49,8 @@ When prompted to enter a passphrase, simply hit **Enter** twice. Then, make sure
 $ ls ~/.ssh/kafka_aws*
 ```
 
+### Create resources using Terraform
+
 With SSH keys in place, you can create the necessary AWS resources using just a few Terraform commands:
 
 ```bash
@@ -63,7 +65,7 @@ Resource | Description | Count
 :--------|:------------|:-----
 Kafka instances | The VMs on which a Kafka broker will run | 3
 ZooKeeper instances | The VMs on which a ZooKeeper node will run | 3
-Client instance | The VM from which the benchmarking suite itself will be run | 1
+Client instance | The VM from which the benchmarking suite itself will be run | 4
 
 When you run `terraform apply`, you will be prompted to type `yes`. Type `yes` to continue with the installation or anything else to quit.
 
@@ -103,24 +105,19 @@ In the [output](https://www.terraform.io/intro/getting-started/outputs.html) pro
 $ ssh -i ~/.ssh/kafka_aws ec2-user@$(terraform output client_ssh_host)
 ```
 
-## Running the benchmarks from the client host
+## Running the benchmarks from the client hosts
 
-Once you've successfully SSHed into the client host, you can run the benchmarks like this:
+> The benchmark scripts can be run from the /opt/benchmark working directory.
 
-```bash
-$ cd /opt/benchmark
-$ sudo bin/benchmark \
-  --drivers driver-kafka/kafka.yaml \
-  workloads/*.yaml
-```
-
-You can also run specific workloads in the `workloads` folder. Here's an example:
+Once you've successfully SSHed into the client host, you can run any of the [existing benchmarking workloads](../#benchmarking-workloads) by specifying the YAML file for that workload when running the `benchmark` executable. All workloads are in the `workloads` folder. Here's an example:
 
 ```bash
 $ sudo bin/benchmark \
   --drivers driver-kafka/kafka.yaml \
   workloads/1-topic-16-partitions-1kb.yaml
 ```
+
+> Although benchmarks are run *from* a specific client host, the benchmarks are run in distributed mode, across multiple client hosts.
 
 There are multiple Kafka "modes" for which you can run benchmarks. Each mode has its own YAML configuration file in the `driver-kafka` folder.
 
@@ -130,24 +127,45 @@ Standard | Kafka with message idempotence disabled (at-least-once semantics) | `
 Exactly once | Kafka with message idempotence enabled ("exactly-once" semantics) | `kafka-exactly-once.yaml`
 Sync | Kafka with durability enabled (all published messages synced to disk) | `kafka-sync.yaml`
 
-The example used the "standard" mode as configured in `driver-kafka/kafka.yaml`. To run all available benchmark workloads in "exactly once" or "sync" mode instead:
+The example used the "standard" mode as configured in `driver-kafka/kafka.yaml`. Here are some examples for the other modes:
 
 ```bash
 # Exactly once
 $ sudo bin/benchmark \
   --drivers driver-kafka/kafka-exactly-once.yaml \
-  workloads/*.yaml
+  workloads/1-topic-16-partitions-1kb.yaml
 
 # Sync
 $ sudo bin/benchmark \
   --drivers driver-kafka/kafka-sync.yaml \
-  workloads/*.yaml
+  workloads/1-topic-16-partitions-1kb.yaml
 ```
 
-Here's an example of running a specific benchmarking workload in exactly once mode:
+### Specify client hosts
+
+By default, benchmarks will be run from the set of hosts created by Terraform. You can also specify a comma-separated list of client hosts using the `--workers` flag (or `-w` for short):
 
 ```bash
 $ sudo bin/benchmark \
   --drivers driver-kafka/kafka-exactly-once.yaml \
+  --workers 1.2.3.4:8080,4.5.6.7:8080 \ # or -w 1.2.3.4:8080,4.5.6.7:8080
   workloads/1-topic-16-partitions-1kb.yaml
 ```
+
+## Downloading your benchmarking results
+
+The OpenMessaging benchmarking suite stores results in JSON files in the `/opt/benchmark` folder on the client host from which the benchmarks are run. You can download those results files onto your local machine using [`scp`](https://linux.die.net/man/1/scp). You can download all generated JSON results files using this command:
+
+```bash
+$ scp -i ~/.ssh/kafka_aws ec2-user@$(terraform output client_ssh_host):/opt/benchmark/*.json .
+```
+
+## Tearing down your benchmarking infrastructure
+
+Once you're finished running your benchmarks, you should tear down the AWS infrastructure you deployed for the sake of saving costs. You can do that with one command:
+
+```bash
+$ terraform destroy -force
+```
+
+Make sure to let the process run to completion (it could take several minutes). Once the tear down is complete, all AWS resources that you created for the Kafka benchmarking suite will have been removed.
