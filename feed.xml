@@ -6,9 +6,65 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 23 Mar 2018 08:23:10 +0000</pubDate>
-    <lastBuildDate>Fri, 23 Mar 2018 08:23:10 +0000</lastBuildDate>
+    <pubDate>Wed, 28 Mar 2018 02:31:36 +0000</pubDate>
+    <lastBuildDate>Wed, 28 Mar 2018 02:31:36 +0000</lastBuildDate>
     <generator>Jekyll v3.7.2</generator>
+    
+      <item>
+        <title>OpenMessaging Domain Architecture V0.3</title>
+        <description>&lt;p&gt;Above is the v0.3 domain architecture of Open Messaging, see &lt;a href=&quot;/openmessaging-java&quot;&gt;JavaDoc&lt;/a&gt; for details.&lt;/p&gt;
+
+&lt;p&gt;The topic concept has been removed from the model, compared to the first version. And the Stream element has been introduced to this version which is a abstract concept of partition, shard, message group, etc.&lt;/p&gt;
+
+&lt;p&gt;The following sub sections demonstrate these concepts introduced to OMS.&lt;/p&gt;
+
+&lt;h2 id=&quot;namespace&quot;&gt;Namespace&lt;/h2&gt;
+
+&lt;p&gt;Namespace likes a cgroup namespace, to create an isolated space with security guarantee. Each namespace has its own set of producer, consumer, topic, queue and so on. OpenMessaging uses MessagingAccessPoint to access/read/write the resources of a specified Namespace.&lt;/p&gt;
+
+&lt;h2 id=&quot;producer&quot;&gt;Producer&lt;/h2&gt;
+
+&lt;p&gt;OpenMessaging defines two kinds of Producer: Producer and BatchMessageSender.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Producer, provides various send methods to send a message to a specified destination which is a queue in OMS.&lt;/li&gt;
+  &lt;li&gt;BatchMessageSender, focuses on speed, the implementation can adopt the batch way, send many messages and then commit at once.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;consumer&quot;&gt;Consumer&lt;/h2&gt;
+
+&lt;p&gt;OpenMessaging defines three kinds of Consumer: PullConsumer, PushConsumer and StreamingConsumer. Each consumer only supports consume messages from the Queue.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;PullConsumer, pulls messages from the specified queue, supports submit the consume result by acknowledgement at any time. One PullConsumer only can pull messages from one fixed queue.&lt;/li&gt;
+  &lt;li&gt;PushConsumer, receives messages from multiple queues, these messages are pushed from the MOM server. PushConsumer can attach to multiple queues with separate MessageListener and submit consume result through ReceivedMessageContext at any time.&lt;/li&gt;
+  &lt;li&gt;StreamingConsumer, a brand-new consumer type, a stream-oriented consumer, to integrate messaging system with Streaming/BigData related platforms easily. StreamingConsumer supports consume messages from streams of a specified queue like a iterator.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;queue&quot;&gt;Queue&lt;/h2&gt;
+
+&lt;p&gt;Queue is the basic and core concept of OMS, the source of a Queue can be a producer or a routing.&lt;/p&gt;
+
+&lt;p&gt;It is noteworthy that a Queue may be divided into streams, a message will be dispatched to a specified stream by MessageHeader#STREAM_KEY.&lt;/p&gt;
+
+&lt;p&gt;Queue also accepts messages from Producer directly, sometimes, we want to the shortest path from Producer to Consumer, for performance.&lt;/p&gt;
+
+&lt;h2 id=&quot;routing&quot;&gt;Routing&lt;/h2&gt;
+
+&lt;p&gt;The Routing is in charge of processing the original messages in source queue, and routing to another queue. Each Routing is a triple consists of source queue, destination queue and expression. The messages will flow through the expression from source queue and destination queue.&lt;/p&gt;
+
+&lt;p&gt;The expression is used to handle the flowing messages in Routing. There are many kinds of expression, the filter expression is the most commonly used in many scenarios and is the only type defined by this OMS version. In the future, the OMS may support deduplicator exp., joiner exp., rpc exp., and so on.&lt;/p&gt;
+
+&lt;p&gt;What’s more? Routing can cross the network, message can be routed from a network partition to another partition.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 28 Mar 2018 00:00:00 +0000</pubDate>
+        <link>/design/2018/03/28/openmessaging-domain-architecture-v0.3/</link>
+        <guid isPermaLink="true">/design/2018/03/28/openmessaging-domain-architecture-v0.3/</guid>
+        
+        
+        <category>design</category>
+        
+      </item>
     
       <item>
         <title>Helping Enterprises Evaluate Performance of Messaging Solutions</title>

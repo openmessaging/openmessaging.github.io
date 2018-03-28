@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Helping Enterprises Evaluate Performance of Messaging Solutions</title>
-  <meta name="description" content="The acceleration of microservice-based and cloud-based applications has put a growing focus on how data is connected to services, applications and users.">
+  <title>OpenMessaging Domain Architecture V0.3</title>
+  <meta name="description" content="OpenMessaging has released three alpha versions recently and the newest version is 0.2.0-alpha, the domain architecture has a great evolution beyond the firs...">
 
   <link rel="stylesheet" href="/css/foundation.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -55,7 +55,7 @@
   <script src="/javascripts/imagesloaded.pkgd.min.js" type="text/javascript"></script>
   <script src="/javascripts/slick.min.js" type="text/javascript"></script>
 
-  <link rel="canonical" href="/design/2018/03/08/openmessaging-helping-enterprises-evaluate-performance-of-messaging-solutions/">
+  <link rel="canonical" href="/design/2018/03/28/openmessaging-domain-architecture-v0.3/">
   <link rel="alternate" type="application/rss+xml" title="OpenMessaging" href="/feed.xml" />
 </head>
 
@@ -156,14 +156,16 @@
       <div class='mod modBlogPost big no_bg'>
   <div class='images'>
     
+      <div class='image'><img alt="" src="/images/@blog/oms-domain-design-v0.3.png" /></div>
+    
   </div>
   <div class='content'>
     <p class='info'>
-      <span>March 08, 2018</span>
+      <span>March 28, 2018</span>
       /
       <span>
         by
-        <a href="">Zibby Keaton</a>
+        <a href="">yukon</a>
       </span>
       /
       <span>
@@ -178,25 +180,51 @@
         <a href="#">4 commetns</a>
       </span> -->
     </p>
-    <h3><a href="/design/2018/03/08/openmessaging-helping-enterprises-evaluate-performance-of-messaging-solutions/">Helping Enterprises Evaluate Performance of Messaging Solutions</a></h3>
-    <p>The acceleration of microservice-based and cloud-based applications has put a growing focus on how data is connected to services, applications and users. This focus has led to a number of new innovations and new products that support messaging and queueing needs. It has also contributed to increased demands on messaging and queuing solutions, making performance and scalability critical to success.</p>
+    <h3><a href="/design/2018/03/28/openmessaging-domain-architecture-v0.3/">OpenMessaging Domain Architecture V0.3</a></h3>
+    <p>Above is the v0.3 domain architecture of Open Messaging, see <a href="/openmessaging-java">JavaDoc</a> for details.</p>
 
-<p>OpenMessaging was created to ensure that users could confidently choose and deploy the distributed messaging technology that best meets their specific requirements. Since its launch last fall, OpenMessaging has enabled steady progress on the implementation and adoption of open protocols and connectivity for messaging solutions allowing users to adopt messaging solutions without the burden and complexity of incompatibility and proprietary interfaces.</p>
+<p>The topic concept has been removed from the model, compared to the first version. And the Stream element has been introduced to this version which is a abstract concept of partition, shard, message group, etc.</p>
 
-<p>Earlier this week, we announced the addition of a multi-platform benchmark to OpenMessaging, which adds a valuable new dimension to OpenMessaging. The growing demands on messaging solutions make performance and scalability critically important criteria for choosing messaging technology. However, there are no multi-platform tools based on open standards to aid organizations in assessing performance of messaging and queuing solutions. This benchmark fills the need for a toolkit that makes it easy to measure and compare performance of these solutions.</p>
+<p>The following sub sections demonstrate these concepts introduced to OMS.</p>
 
-<p>The OpenMessaging benchmark is designed to assess performance characteristics that apply to real-world scenarios including end-to-end latency, throughput, and scalability of topics and partitions. It is provided as an open, customizable, and extensible kit giving users the ability to tailor it to help assess performance based on their specific requirements.</p>
+<h2 id="namespace">Namespace</h2>
 
-<h2 id="members-and-community-weigh-in">Members and Community Weigh In</h2>
+<p>Namespace likes a cgroup namespace, to create an isolated space with security guarantee. Each namespace has its own set of producer, consumer, topic, queue and so on. OpenMessaging uses MessagingAccessPoint to access/read/write the resources of a specified Namespace.</p>
 
-<p>“With the variety of messaging solutions available, including open source solutions such as Apache Kafka, Apache Pulsar, and Apache RocketMQ, the lack of an industry-wide standard for messaging makes evaluating solutions difficult,” said Von Gosling, Alibaba Senior Architect, Apache RocketMQ Co-Creator and PMC member. “To address this, Alibaba and other leading organizations have launched the OpenMessaging project within the Linux Foundation and have designed an OpenMessaging benchmark to compare different messaging systems in many dimensions, including common messaging use cases and transactional scenarios. We hope to see more and more messaging vendors join this open effort to make it the standard for how messaging performance is measured and compared.”</p>
+<h2 id="producer">Producer</h2>
 
-<p>“Performance and scalability are crucial criteria when choosing a messaging solution, but to date customers have been poorly served when it comes to tools for evaluating their options,” said Matteo Merli, co-founder of Streamlio, a founding member of OpenMessaging. “The new OpenMessaging benchmark provides customers with the tools they need to evaluate and choose the right solution to meet their performance and scalability demands, both now and in the future.”</p>
+<p>OpenMessaging defines two kinds of Producer: Producer and BatchMessageSender.</p>
 
-<p>This benchmark is another great example of how OpenMessaging is providing users the standard-based tools and solutions they need to confidently select and deploy messaging solutions. As part of the OpenMessaging project, the OpenMessaging community will continue to enhance and extend this benchmark to meet industry needs. For more information and to access the benchmark kit as well as contribute to its future development, you can visit https://github.com/openmessaging/openmessaging-benchmark.</p>
+<ul>
+  <li>Producer, provides various send methods to send a message to a specified destination which is a queue in OMS.</li>
+  <li>BatchMessageSender, focuses on speed, the implementation can adopt the batch way, send many messages and then commit at once.</li>
+</ul>
 
-<p>To learn more about OpenMessaging and to join the OpenMessaging community, visit https://openmessaging.cloud.</p>
+<h2 id="consumer">Consumer</h2>
 
+<p>OpenMessaging defines three kinds of Consumer: PullConsumer, PushConsumer and StreamingConsumer. Each consumer only supports consume messages from the Queue.</p>
+
+<ul>
+  <li>PullConsumer, pulls messages from the specified queue, supports submit the consume result by acknowledgement at any time. One PullConsumer only can pull messages from one fixed queue.</li>
+  <li>PushConsumer, receives messages from multiple queues, these messages are pushed from the MOM server. PushConsumer can attach to multiple queues with separate MessageListener and submit consume result through ReceivedMessageContext at any time.</li>
+  <li>StreamingConsumer, a brand-new consumer type, a stream-oriented consumer, to integrate messaging system with Streaming/BigData related platforms easily. StreamingConsumer supports consume messages from streams of a specified queue like a iterator.</li>
+</ul>
+
+<h2 id="queue">Queue</h2>
+
+<p>Queue is the basic and core concept of OMS, the source of a Queue can be a producer or a routing.</p>
+
+<p>It is noteworthy that a Queue may be divided into streams, a message will be dispatched to a specified stream by MessageHeader#STREAM_KEY.</p>
+
+<p>Queue also accepts messages from Producer directly, sometimes, we want to the shortest path from Producer to Consumer, for performance.</p>
+
+<h2 id="routing">Routing</h2>
+
+<p>The Routing is in charge of processing the original messages in source queue, and routing to another queue. Each Routing is a triple consists of source queue, destination queue and expression. The messages will flow through the expression from source queue and destination queue.</p>
+
+<p>The expression is used to handle the flowing messages in Routing. There are many kinds of expression, the filter expression is the most commonly used in many scenarios and is the only type defined by this OMS version. In the future, the OMS may support deduplicator exp., joiner exp., rpc exp., and so on.</p>
+
+<p>What’s more? Routing can cross the network, message can be routed from a network partition to another partition.</p>
 
   </div>
 </div>
