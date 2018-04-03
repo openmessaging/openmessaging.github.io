@@ -178,19 +178,21 @@
 <p>OpenMessaging benchmarking suites are currently available for the following systems:</p>
 
 <ul>
-  <li><a href="https://kafka.apache.org">Apache Kafka</a></li>
+  <li><a href="https://rocketmq.apache.org">Apache RocketMQ</a></li>
   <li><a href="https://pulsar.incubator.apache.org">Apache Pulsar</a></li>
+  <li><a href="https://kafka.apache.org">Apache Kafka</a></li>
 </ul>
 
 <blockquote>
-  <p>Benchmarking suites for <a href="https://rocketmq.apache.org">Apache RocketMQ</a> and <a href="https://www.rabbitmq.com">RabbitMQ</a> will be available soon.</p>
+  <p>Benchmarking suites for <a href="https://www.rabbitmq.com">RabbitMQ</a> will be available soon.</p>
 </blockquote>
 
-<p>For each platform, the benchmarking suite includes easy-to-use scripts for deploying that platform on <a href="https://aws.amazon.com">Amazon Web Services</a> (AWS) and then running benchmarks upon deployment. For end-to-end instructions, see platform-specific docs for:</p>
+<p>For each platform, the benchmarking suite includes easy-to-use scripts for deploying that platform on <a href="https://www.alibabacloud.com/">AlibabaCloud</a> and <a href="https://aws.amazon.com">Amazon Web Services</a> (AWS) and then running benchmarks upon deployment. For end-to-end instructions, see platform-specific docs for:</p>
 
 <ul>
-  <li><a href="../benchmarks/kafka">Apache Kafka</a></li>
+  <li><a href="../benchmarks/rocketmq">Apache RocketMQ</a></li>
   <li><a href="../benchmarks/pulsar">Apache Pulsar</a></li>
+  <li><a href="../benchmarks/kafka">Apache Kafka</a></li>
 </ul>
 
 <h2 id="benchmarking-workloads">Benchmarking workloads</h2>
@@ -442,10 +444,10 @@
 <p>In order to add a new platform for benchmarking, you need to provide the following:</p>
 
 <ul>
-  <li>A <a href="https://terraform.io">Terraform</a> configuration for creating the necessary AWS resources (<a href="https://github.com/streamlio/messaging-benchmark/blob/lperkins/readme-changes/driver-kafka/deploy/provision-kafka-aws.tf">example</a>)</li>
-  <li>An <a href="http://docs.ansible.com/ansible/latest/playbooks.html">Ansible playbook</a> for installing and starting the platform on AWS (<a href="https://github.com/streamlio/messaging-benchmark/blob/lperkins/readme-changes/driver-pulsar/deploy/deploy.yaml">example</a>)</li>
-  <li>An implementation of the Java <a href="https://github.com/streamlio/messaging-benchmark/tree/master/driver-api"><code class="highlighter-rouge">driver-api</code></a> library (<a href="https://github.com/streamlio/messaging-benchmark/tree/lperkins/readme-changes/driver-kafka/src/main/java/io/openmessaging/benchmark/driver/kafka">example</a>)</li>
-  <li>A YAML configuration file that provides any necessary client configuration info (<a href="https://github.com/streamlio/messaging-benchmark/blob/master/driver-pulsar/pulsar.yaml">example</a>)</li>
+  <li>A <a href="https://terraform.io">Terraform</a> configuration for creating the necessary AlibabaCloud or AWS resources (<a href="https://github.com/openmessaging/openmessaging-benchmark/blob/master/driver-rocketmq/deploy/provision-rocketmq-alicloud.tf">example</a>)</li>
+  <li>An <a href="http://docs.ansible.com/ansible/latest/playbooks.html">Ansible playbook</a> for installing and starting the platform on AWS (<a href="https://github.com/openmessaging/openmessaging-benchmark/blob/master/driver-pulsar/deploy/deploy.yaml">example</a>)</li>
+  <li>An implementation of the Java <a href="https://github.com/streamlio/messaging-benchmark/tree/master/driver-api"><code class="highlighter-rouge">driver-api</code></a> library (<a href="https://github.com/openmessaging/openmessaging-benchmark/tree/master/driver-kafka/src/main/java/io/openmessaging/benchmark/driver/kafka">example</a>)</li>
+  <li>A YAML configuration file that provides any necessary client configuration info (<a href="https://github.com/openmessaging/openmessaging-benchmark/blob/master/driver-pulsar/pulsar.yaml">example</a>)</li>
 </ul>
 
       </div>
@@ -466,9 +468,11 @@
     
     <li><a href="/docs/benchmarks">Intro</a></li>
     
-    <li><a href="/docs/benchmarks/kafka">Apache Kafka</a></li>
+    <li><a href="/docs/benchmarks/rocketmq">Apache RocketMQ</a></li>
     
     <li><a href="/docs/benchmarks/pulsar">Apache Pulsar</a></li>
+    
+    <li><a href="/docs/benchmarks/kafka">Apache Kafka</a></li>
     
   </ul>
   

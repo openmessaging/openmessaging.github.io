@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Apache Pulsar benchmarks</title>
+  <title>Apache RocketMQ benchmarks</title>
   <meta name="description" content="OpenMessaging is a cloud-oriented and vendor-neutral open standard for messaging, providing industry guidelines for areas such as finance, e-commerce, IoT and Big Data and oriented toward furthering messaging and streaming applications across heterogeneous systems and platforms.
 ">
 
@@ -56,7 +56,7 @@
   <script src="/javascripts/imagesloaded.pkgd.min.js" type="text/javascript"></script>
   <script src="/javascripts/slick.min.js" type="text/javascript"></script>
 
-  <link rel="canonical" href="/docs/benchmarks/pulsar/">
+  <link rel="canonical" href="/docs/benchmarks/rocketmq/">
   <link rel="alternate" type="application/rss+xml" title="OpenMessaging" href="/feed.xml" />
 </head>
 
@@ -155,11 +155,11 @@
   <div class="row">
     <div class="large-9 columns">
       <div class="mod modBlogPost big no_bg">
-        <h3><a href="/docs/benchmarks/pulsar/">Apache Pulsar benchmarks</a></h3>
-        <p>This tutorial shows you how to run OpenMessaging <a href="..">benchmarks</a> for <a href="https://pulsar.incubator.apache.org">Apache Pulsar</a>. You can currently deploy to the following platforms:</p>
+        <h3><a href="/docs/benchmarks/rocketmq/">Apache RocketMQ benchmarks</a></h3>
+        <p>This tutorial shows you how to run OpenMessaging <a href="..">benchmarks</a> for <a href="https://rocketmq.apache.org">Apache RocketMQ</a>. You can currently deploy to the following platforms:</p>
 
 <ul>
-  <li><a href="#deploy-a-pulsar-cluster-on-amazon-web-services">Amazon Web Services</a> (AWS)</li>
+  <li><a href="#deploy-a-rocketmq-cluster-on-alibabacloud">AlibabaCloud</a> (AliCloud)</li>
 </ul>
 
 <h2 id="initial-setup">Initial setup</h2>
@@ -179,40 +179,34 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mvn <span class="nb">install</span>
 </code></pre></div></div>
 
-<h2 id="deploy-a-pulsar-cluster-on-amazon-web-services">Deploy a Pulsar cluster on Amazon Web Services</h2>
+<h2 id="deploy-a-rocketmq-cluster-on-alibabacloud">Deploy a RocketMQ cluster on AlibabaCloud</h2>
 
-<p>You can deploy a Pulsar cluster on AWS (for benchmarking purposes) using <a href="https://terraform.io/">Terraform</a> and <a href="http://docs.ansible.com/ansible/latest/intro_installation.html">Ansible</a>. You’ll need to have both of those tools installed as well as the <a href="https://github.com/adammck/terraform-inventory"><code class="highlighter-rouge">terraform-inventory</code> plugin</a> for Terraform.</p>
+<p>You can deploy a RocketMQ cluster on AliCloud (for benchmarking purposes) using <a href="https://terraform.io/">Terraform</a> and <a href="http://docs.ansible.com/ansible/latest/intro_installation.html">Ansible</a>. You’ll need to have both of those tools installed as well as the <a href="https://github.com/adammck/terraform-inventory"><code class="highlighter-rouge">terraform-inventory</code> plugin</a> for Terraform.</p>
 
 <p>In addition, you’ll need to:</p>
 
 <ul>
-  <li><a href="https://aws.amazon.com/account/">Create an AWS account</a> (or use an existing account)</li>
-  <li><a href="https://aws.amazon.com/cli/">Install the <code class="highlighter-rouge">aws</code> CLI tool</a></li>
-  <li><a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html">Configure the <code class="highlighter-rouge">aws</code> CLI tool</a></li>
+  <li><a href="https://account.alibabacloud.com/register/intl_register.htm">Create an AliCloud account</a> (or use an existing account)</li>
 </ul>
 
-<h3 id="ssh-keys">SSH keys</h3>
+<h3 id="export-the-accesskey-and-secretkey">Export the AccessKey and SecretKey</h3>
 
-<p>Once you’re all set up with AWS and have the necessary tools installed locally, you’ll need to create both a public and a private SSH key at <code class="highlighter-rouge">~/.ssh/pulsar_aws</code> (private) and <code class="highlighter-rouge">~/.ssh/pulsar_aws.pub</code> (public), respectively.</p>
+<p>Once you’re all set up with AliCloud account, you’ll need to export the AccessKey and SecretKey.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh-keygen <span class="nt">-f</span> ~/.ssh/pulsar_aws
-</code></pre></div></div>
-
-<p>When prompted to enter a passphrase, simply hit <strong>Enter</strong> twice. Then, make sure that the keys have been created:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">ls</span> ~/.ssh/pulsar_aws<span class="k">*</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">export </span><span class="nv">ALICLOUD_ACCESS_KEY</span><span class="o">=</span><span class="s2">"XXXX"</span>
+<span class="nv">$ </span><span class="nb">export </span><span class="nv">ALICLOUD_SECRET_KEY</span><span class="o">=</span><span class="s2">"XXXX"</span>
 </code></pre></div></div>
 
 <h3 id="create-resources-using-terraform">Create resources using Terraform</h3>
 
-<p>With SSH keys in place, you can create the necessary AWS resources using just a few Terraform commands:</p>
+<p>With AccessKey and SecretKey in place, you can create the necessary AliCloud resources using just a few Terraform commands:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>driver-pulsar/deploy
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>driver-rocketmq/deploy
 <span class="nv">$ </span>terraform init
 <span class="nv">$ </span>terraform apply
 </code></pre></div></div>
 
-<p>This will install the following <a href="https://aws.amazon.com/ec2">EC2</a> instances (plus some other resources, such as a <a href="https://aws.amazon.com/vpc/">Virtual Private Cloud</a> (VPC)):</p>
+<p>This will install the following <a href="https://www.alibabacloud.com/product/ecs">ECS</a> instances (plus some other resources, such as public IPs, a security group.):</p>
 
 <table>
   <thead>
@@ -224,14 +218,14 @@
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left">Pulsar instances</td>
-      <td style="text-align: left">The VMs on which a Pulsar broker will run</td>
-      <td style="text-align: left">3</td>
+      <td style="text-align: left">RocketMQ Broker instances</td>
+      <td style="text-align: left">The VMs on which a RocketMQ broker will run</td>
+      <td style="text-align: left">2</td>
     </tr>
     <tr>
-      <td style="text-align: left">ZooKeeper instances</td>
-      <td style="text-align: left">The VMs on which a ZooKeeper node will run</td>
-      <td style="text-align: left">3</td>
+      <td style="text-align: left">RocketMQ NameServer instances</td>
+      <td style="text-align: left">The VMs on which a RocketMQ NameServer node will run</td>
+      <td style="text-align: left">1</td>
     </tr>
     <tr>
       <td style="text-align: left">Client instance</td>
@@ -260,46 +254,49 @@
   <tbody>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">region</code></td>
-      <td style="text-align: left">The AWS region in which the Pulsar cluster will be deployed</td>
-      <td style="text-align: left"><code class="highlighter-rouge">us-west-2</code></td>
+      <td style="text-align: left">The AliCloud region in which the RocketMQ cluster will be deployed</td>
+      <td style="text-align: left"><code class="highlighter-rouge">cn-hangzhou</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">public_key_path</code></td>
-      <td style="text-align: left">The path to the SSH public key that you’ve generated</td>
-      <td style="text-align: left"><code class="highlighter-rouge">~/.ssh/pulsar_aws.pub</code></td>
+      <td style="text-align: left"><code class="highlighter-rouge">availability_zone</code></td>
+      <td style="text-align: left">The availability zone of the specific region</td>
+      <td style="text-align: left"><code class="highlighter-rouge">cn-hangzhou-b</code></td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">ami</code></td>
-      <td style="text-align: left">The <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html">Amazon Machine Image</a> (AWI) to be used by the cluster’s machines</td>
-      <td style="text-align: left"><a href="https://access.redhat.com/articles/3135091"><code class="highlighter-rouge">ami-9fa343e7</code></a></td>
+      <td style="text-align: left"><code class="highlighter-rouge">private_key_file</code></td>
+      <td style="text-align: left">The name of file that can save key pairs data source after running terraform plan.</td>
+      <td style="text-align: left"><code class="highlighter-rouge">rocketmq_alicloud.pem</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">image_id</code></td>
+      <td style="text-align: left">The <a href="https://www.alibabacloud.com/help/doc-detail/65087.htm">AliCloud Machine Image</a> to be used by the cluster’s machines</td>
+      <td style="text-align: left"><code class="highlighter-rouge">centos_7_04_64_20G_alibase_201701015.vhd</code></td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">instance_types</code></td>
-      <td style="text-align: left">The EC2 instance types used by the various components</td>
-      <td style="text-align: left"><code class="highlighter-rouge">i3.4xlarge</code> (Pulsar brokers and BookKeeper bookies), <code class="highlighter-rouge">t2.small</code> (ZooKeeper), <code class="highlighter-rouge">c4.8xlarge</code> (benchmarking client)</td>
+      <td style="text-align: left">The ECS instance types used by the various components</td>
+      <td style="text-align: left"><code class="highlighter-rouge">ecs.mn4.xlarge</code> (RocketMQ brokers), <code class="highlighter-rouge">ecs.n4.xlarge</code> (RocketMQ nameserver), <code class="highlighter-rouge">ecs.mn4.xlarge</code> (benchmarking client)</td>
     </tr>
   </tbody>
 </table>
 
-<p>If you modify the <code class="highlighter-rouge">public_key_path</code>, make sure that you point to the appropriate SSH key path when running the <a href="#running-the-ansible-playbook">Ansible playbook</a>.</p>
+<p>If you modify the <code class="highlighter-rouge">private_key_file</code>, make sure that you point to the appropriate SSH key path in <code class="highlighter-rouge">ansible.cfg</code> when running the <a href="#running-the-ansible-playbook">Ansible playbook</a>.</p>
 
 <h3 id="running-the-ansible-playbook">Running the Ansible playbook</h3>
 
-<p>With the appropriate infrastructure in place, you can install and start the Pulsar cluster using Ansible with just one command:</p>
+<p>With the appropriate infrastructure in place, you can install and start the RocketMQ cluster using Ansible with just one command:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ansible-playbook <span class="se">\</span>
-  <span class="nt">--user</span> ec2-user <span class="se">\</span>
+  <span class="nt">--user</span> root <span class="se">\</span>
   <span class="nt">--inventory</span> <span class="sb">`</span>which terraform-inventory<span class="sb">`</span> <span class="se">\</span>
   deploy.yaml
 </code></pre></div></div>
-
-<p>If you’re using an SSH private key path different from <code class="highlighter-rouge">~/.ssh/pulsar_aws</code>, you can specify that path using the <code class="highlighter-rouge">--private-key</code> flag, for example <code class="highlighter-rouge">--private-key=~/.ssh/my_key</code>.</p>
 
 <h2 id="sshing-into-the-client-host">SSHing into the client host</h2>
 
 <p>In the <a href="https://www.terraform.io/intro/getting-started/outputs.html">output</a> produced by Terraform, there’s a <code class="highlighter-rouge">client_ssh_host</code> variable that provides the IP address for the client EC2 host from which benchmarks can be run. You can SSH into that host using this command:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh <span class="nt">-i</span> ~/.ssh/pulsar_aws ec2-user@<span class="k">$(</span>terraform output client_ssh_host<span class="k">)</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh <span class="nt">-i</span> rocketmq_alicloud.pem root@<span class="k">$(</span>terraform output client_ssh_host<span class="k">)</span>
 </code></pre></div></div>
 
 <h2 id="running-the-benchmarks-from-the-client-hosts">Running the benchmarks from the client hosts</h2>
@@ -311,15 +308,15 @@
 <p>Once you’ve successfully SSHed into the client host, you can run any of the <a href="../#benchmarking-workloads">existing benchmarking workloads</a> by specifying the YAML file for that workload when running the <code class="highlighter-rouge">benchmark</code> executable. All workloads are in the <code class="highlighter-rouge">workloads</code> folder. Here’s an example:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>bin/benchmark <span class="se">\</span>
-  <span class="nt">--drivers</span> driver-pulsar/pulsar.yaml <span class="se">\</span>
-  workloads/1-topic-16-partitions-1kb.yaml
+  <span class="nt">--drivers</span> driver-rocketmq/rocketmq.yaml <span class="se">\</span>
+  workloads/simple-workload.yaml
 </code></pre></div></div>
 
 <blockquote>
   <p>Although benchmarks are run <em>from</em> a specific client host, the benchmarks are run in distributed mode, across multiple client hosts.</p>
 </blockquote>
 
-<p>There are multiple Pulsar “modes” for which you can run benchmarks. Each mode has its own YAML configuration file in the <code class="highlighter-rouge">driver-pulsar</code> folder.</p>
+<p>There are multiple RocketMQ “modes” for which you can run benchmarks. Each mode has its own YAML configuration file in the <code class="highlighter-rouge">driver-rocketmq</code> folder.</p>
 
 <table>
   <thead>
@@ -332,30 +329,20 @@
   <tbody>
     <tr>
       <td style="text-align: left">Standard</td>
-      <td style="text-align: left">Pulsar with message de-duplication disabled (at-least-once semantics)</td>
-      <td style="text-align: left"><code class="highlighter-rouge">pulsar.yaml</code></td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Effectively once</td>
-      <td style="text-align: left">Pulsar with message de-duplication enabled (“effectively-once” semantics)</td>
-      <td style="text-align: left"><code class="highlighter-rouge">pulsar-effectively-once.yaml</code></td>
+      <td style="text-align: left">Non-batch and at-least-once semantics</td>
+      <td style="text-align: left"><code class="highlighter-rouge">rocketmq.yaml</code></td>
     </tr>
   </tbody>
 </table>
 
-<p>The example used the “standard” mode as configured in <code class="highlighter-rouge">driver-pulsar/pulsar.yaml</code>. Here’s an example of running a benchmarking workload in effectively once mode:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>bin/benchmark <span class="se">\</span>
-  <span class="nt">--drivers</span> driver-pulsar/pulsar-effectively-once.yaml <span class="se">\</span>
-  workloads/1-topic-16-partitions-1kb.yaml
-</code></pre></div></div>
+<p>The example used the “standard” mode as configured in <code class="highlighter-rouge">driver-rocketmq/rocketmq.yaml</code>.</p>
 
 <h3 id="specify-client-hosts">Specify client hosts</h3>
 
 <p>By default, benchmarks will be run from the set of hosts created by Terraform. You can also specify a comma-separated list of client hosts using the <code class="highlighter-rouge">--workers</code> flag (or <code class="highlighter-rouge">-w</code> for short):</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>bin/benchmark <span class="se">\</span>
-  <span class="nt">--drivers</span> driver-pulsar/pulsar-effectively-once.yaml <span class="se">\</span>
+  <span class="nt">--drivers</span> driver-rocketmq/rocketmq.yaml <span class="se">\</span>
   <span class="nt">--workers</span> 1.2.3.4:8080,4.5.6.7:8080 <span class="se">\ </span><span class="c"># or -w 1.2.3.4:8080,4.5.6.7:8080</span>
   workloads/1-topic-16-partitions-1kb.yaml
 </code></pre></div></div>
@@ -364,17 +351,17 @@
 
 <p>The OpenMessaging benchmarking suite stores results in JSON files in the <code class="highlighter-rouge">/opt/benchmark</code> folder on the client host from which the benchmarks are run. You can download those results files onto your local machine using <a href="https://linux.die.net/man/1/scp"><code class="highlighter-rouge">scp</code></a>. You can download all generated JSON results files using this command:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>scp <span class="nt">-i</span> ~/.ssh/pulsar_aws ec2-user@<span class="k">$(</span>terraform output client_ssh_host<span class="k">)</span>:/opt/benchmark/<span class="k">*</span>.json <span class="nb">.</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>scp <span class="nt">-i</span> rocketmq_alicloud.pem root@<span class="k">$(</span>terraform output client_ssh_host<span class="k">)</span>:/opt/benchmark/<span class="k">*</span>.json <span class="nb">.</span>
 </code></pre></div></div>
 
 <h2 id="tearing-down-your-benchmarking-infrastructure">Tearing down your benchmarking infrastructure</h2>
 
-<p>Once you’re finished running your benchmarks, you should tear down the AWS infrastructure you deployed for the sake of saving costs. You can do that with one command:</p>
+<p>Once you’re finished running your benchmarks, you should tear down the AliCloud infrastructure you deployed for the sake of saving costs. You can do that with one command:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>terraform destroy <span class="nt">-force</span>
 </code></pre></div></div>
 
-<p>Make sure to let the process run to completion (it could take several minutes). Once the tear down is complete, all AWS resources that you created for the Pulsar benchmarking suite will have been removed.</p>
+<p>Make sure to let the process run to completion (it could take several minutes). Once the tear down is complete, all AliCloud resources that you created for the RocketMQ benchmarking suite will have been removed.</p>
 
       </div>
     </div>
