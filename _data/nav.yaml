@@ -9,10 +9,13 @@
     subchildren:
     - name: Intro
       path: /docs/benchmarks
-    - name: Apache Kafka
-      path: /docs/benchmarks/kafka
+    - name: Apache RocketMQ
+      path: /docs/benchmarks/rocketmq
     - name: Apache Pulsar
       path: /docs/benchmarks/pulsar
+    - name: Apache Kafka
+      path: /docs/benchmarks/kafka
+    
   - name: Java APIs
     path: openmessaging-java
 - name: Blog

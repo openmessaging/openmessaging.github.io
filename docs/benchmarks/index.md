@@ -19,15 +19,17 @@ The goal of the OpenMessaging Benchmark Framework is to provide benchmarking sui
 
 OpenMessaging benchmarking suites are currently available for the following systems:
 
-* [Apache Kafka](https://kafka.apache.org)
+* [Apache RocketMQ](https://rocketmq.apache.org)
 * [Apache Pulsar](https://pulsar.incubator.apache.org)
+* [Apache Kafka](https://kafka.apache.org)
 
-> Benchmarking suites for [Apache RocketMQ](https://rocketmq.apache.org) and [RabbitMQ](https://www.rabbitmq.com) will be available soon.
+> Benchmarking suites for [RabbitMQ](https://www.rabbitmq.com) will be available soon.
 
-For each platform, the benchmarking suite includes easy-to-use scripts for deploying that platform on [Amazon Web Services](https://aws.amazon.com) (AWS) and then running benchmarks upon deployment. For end-to-end instructions, see platform-specific docs for:
+For each platform, the benchmarking suite includes easy-to-use scripts for deploying that platform on [AlibabaCloud](https://www.alibabacloud.com/) and [Amazon Web Services](https://aws.amazon.com) (AWS) and then running benchmarks upon deployment. For end-to-end instructions, see platform-specific docs for:
 
-* [Apache Kafka](../benchmarks/kafka)
+* [Apache RocketMQ](../benchmarks/rocketmq)
 * [Apache Pulsar](../benchmarks/pulsar)
+* [Apache Kafka](../benchmarks/kafka)
 
 ## Benchmarking workloads
 
@@ -106,7 +108,7 @@ You'll also see a message like this that tells into which JSON file the benchmar
 
 In order to add a new platform for benchmarking, you need to provide the following:
 
-* A [Terraform](https://terraform.io) configuration for creating the necessary AWS resources ([example](https://github.com/streamlio/messaging-benchmark/blob/lperkins/readme-changes/driver-kafka/deploy/provision-kafka-aws.tf))
-* An [Ansible playbook](http://docs.ansible.com/ansible/latest/playbooks.html) for installing and starting the platform on AWS ([example](https://github.com/streamlio/messaging-benchmark/blob/lperkins/readme-changes/driver-pulsar/deploy/deploy.yaml))
-* An implementation of the Java [`driver-api`](https://github.com/streamlio/messaging-benchmark/tree/master/driver-api) library ([example](https://github.com/streamlio/messaging-benchmark/tree/lperkins/readme-changes/driver-kafka/src/main/java/io/openmessaging/benchmark/driver/kafka))
-* A YAML configuration file that provides any necessary client configuration info ([example](https://github.com/streamlio/messaging-benchmark/blob/master/driver-pulsar/pulsar.yaml))
+* A [Terraform](https://terraform.io) configuration for creating the necessary AlibabaCloud or AWS resources ([example](https://github.com/openmessaging/openmessaging-benchmark/blob/master/driver-rocketmq/deploy/provision-rocketmq-alicloud.tf))
+* An [Ansible playbook](http://docs.ansible.com/ansible/latest/playbooks.html) for installing and starting the platform on AWS ([example](https://github.com/openmessaging/openmessaging-benchmark/blob/master/driver-pulsar/deploy/deploy.yaml))
+* An implementation of the Java [`driver-api`](https://github.com/streamlio/messaging-benchmark/tree/master/driver-api) library ([example](https://github.com/openmessaging/openmessaging-benchmark/tree/master/driver-kafka/src/main/java/io/openmessaging/benchmark/driver/kafka))
+* A YAML configuration file that provides any necessary client configuration info ([example](https://github.com/openmessaging/openmessaging-benchmark/blob/master/driver-pulsar/pulsar.yaml))
