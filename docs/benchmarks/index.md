@@ -13,7 +13,7 @@ The goal of the OpenMessaging Benchmark Framework is to provide benchmarking sui
 * **Transparent** &mdash; All benchmarking code is open source, with pull requests very welcome
 * **Realistic** &mdash; Benchmarks should be largely oriented toward standard use cases rather than bizarre edge cases
 
-> If you're interested in contributing to the OpenMessaging Benchmark Framework, you can find the code [on GitHub](https://github.com/openmessaging/benchmark).
+> If you're interested in contributing to the OpenMessaging Benchmark Framework, you can find the code [on GitHub](https://github.com/openmessaging/openmessaging-benchmark).
 
 ## Supported messaging systems
 
