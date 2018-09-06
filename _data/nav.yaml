@@ -4,8 +4,6 @@
 - name: Docs
   section_id: document
   children:
-  - name: Specification
-    path: https://github.com/openmessaging/specification
   - name: Benchmarks
     path: docs/benchmarks
     subchildren:
