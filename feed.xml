@@ -6,8 +6,8 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 11 Sep 2018 05:56:55 +0000</pubDate>
-    <lastBuildDate>Tue, 11 Sep 2018 05:56:55 +0000</lastBuildDate>
+    <pubDate>Tue, 11 Sep 2018 09:02:16 +0000</pubDate>
+    <lastBuildDate>Tue, 11 Sep 2018 09:02:16 +0000</lastBuildDate>
     <generator>Jekyll v3.7.2</generator>
     
       <item>
@@ -97,6 +97,43 @@
       </item>
     
       <item>
+        <title>OpenMessaging Advances with First Open Performance Benchmark for Messaging</title>
+        <description>&lt;p&gt;SAN JOSE, CA. March 6, 2018.  Building on its launch less than six months ago, today the OpenMessaging initiative announced the first open standard, multi-platform performance benchmark for messaging solutions. This extensible benchmark, created through a collaborative effort including Streamlio, Alibaba and the OpenMessaging community, meets the demand for tools to help organizations evaluate the performance of messaging and queuing solutions and demonstrates the continued progress of OpenMessaging in empowering developers and users developing modern data applications.&lt;/p&gt;
+
+&lt;p&gt;OpenMessaging is a collaborative Linux Foundation effort supported by numerous companies including Alibaba, DiDi, Streamlio and Yahoo! who are invested in cloud, big data, and standard APIs. Its mission to create a globally adopted, vendor-neutral, and open standard for distributed messaging that can be deployed in cloud, on-premise, and hybrid use cases.&lt;/p&gt;
+
+&lt;p&gt;Messaging solutions are now a critical component of modern software infrastructure due to the ongoing explosive growth in data sources, data volume, and demands for access to data. This growth has made performance of messaging and queuing solutions critically important. However, to date there have been no multi-platform tools based on open standards to aid organizations in assessing and comparing performance of messaging and queuing solutions.&lt;/p&gt;
+
+&lt;p&gt;To fill this gap, OpenMessaging members Streamlio and Alibaba together with the OpenMessaging community have taken the lead to create a benchmark and supporting tools designed to make it simple to evaluate the performance of messaging and queuing solutions. The benchmark, provided as a kit that can be run, modified, and extended by users, consists of a set of tests that exercise messaging throughput, latency, and scalability in a number of scenarios based on real-world demands. As part of the OpenMessaging project, this benchmark will continue to be enhanced and extended by the OpenMessaging community.&lt;/p&gt;
+
+&lt;p&gt;“Performance and scalabilty are crucial criteria when choosing a messaging solution, but to date customers have been poorly served when it comes to tools for evaluating their options,” said Matteo Merli, co-founder of Streamlio, a founding member of OpenMessaging. “This benchmark, contributed to OpenMessaging by Streamlio and the OpenMessaging community, provides customers with the tools they need to evaluate and choose the right solution to meet their performance and scalability demands both now and in the future.”&lt;/p&gt;
+
+&lt;p&gt;“With the variety of messaging solutions available, including open source solutions such as Apache Kafka, Apache Pulsar, and Apache RocketMQ, the lack of an industry-wide standard for messaging makes evaluating solutions difficult,” said Von Gosling, Alibaba Senior Architect, Apache RocketMQ Co-Creator and PMC member. “To address that, Alibaba and other leading organizations launched the OpenMessaging project within the Linux Standards Foundation, working together to develop a vendor-neutral messaging API and standard. Together we have designed an OpenMessaging benchmark to compare different messaging systems in many dimensions including common messaging use cases and transactional scenarios. We hope to see more and more messaging vendors join this open effort and make contributions to it to make it the standard for how messaging performance is measured and compared.”&lt;/p&gt;
+
+&lt;p&gt;“As more companies and developers move towards data-driven applications, challenges including interoperability issues between platforms and a lack of standard tools for evaluating performance across systems have complicated their efforts,” said Chris Aniszczyk, Vice President, Developer Relations at the Linux Foundation. “The addition of this performance benchmark is another great example of how OpenMessaging is providing users the standards-based tools and solutions they need to confidently select and deploy messaging solutions.”&lt;/p&gt;
+
+&lt;p&gt;To learn more about OpenMessaging and to join the OpenMessaging community, visit &lt;a href=&quot;http://openmessaging.cloud/&quot;&gt;http://openmessaging.cloud/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Resources:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Streamlio: &lt;a href=&quot;https://streaml.io/&quot;&gt;streaml.io&lt;/a&gt; &lt;br /&gt;
+Streamlio Blog:  &lt;a href=&quot;https://streaml.io/blog/open-messaging&quot;&gt;streaml.io/blog/open-messaging&lt;/a&gt;&lt;br /&gt;
+Twitter: &lt;a href=&quot;https://twitter.com/streamlio&quot;&gt;twitter.com/streamlio&lt;/a&gt;&lt;br /&gt;
+LinkedIn: &lt;a href=&quot;https://linkedin.com/company/streamlio&quot;&gt;linkedin.com/company/streamlio&lt;/a&gt;&lt;br /&gt;
+OpenMessaging:  &lt;a href=&quot;http://openmessaging.cloud/&quot;&gt;openmessaging.cloud&lt;/a&gt;&lt;br /&gt;
+OpenMessaging Benchmark:  &lt;a href=&quot;https://github.com/openmessaging/openmessaging-benchmark&quot;&gt;github.com/openmessaging/openmessaging-benchmark&lt;/a&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 06 Mar 2018 00:00:00 +0000</pubDate>
+        <link>/news/2018/03/06/openmessaging-advances-with-first-open-performance-benchmark-for-messaging/</link>
+        <guid isPermaLink="true">/news/2018/03/06/openmessaging-advances-with-first-open-performance-benchmark-for-messaging/</guid>
+        
+        
+        <category>news</category>
+        
+      </item>
+    
+      <item>
         <title>OpenMessaging: Building an Open Standard for Distributed Messaging</title>
         <description>&lt;p&gt;Through a collaborative effort from enterprises and communities invested in cloud, big data, and standard APIs, I’m excited to welcome the OpenMessaging project to The Linux Foundation. The OpenMessaging community’s goal is to create a globally adopted, vendor-neutral, and open standard for distributed messaging that can be deployed in cloud, on-premise, and hybrid use cases.&lt;/p&gt;
 
@@ -137,6 +174,37 @@
         <pubDate>Tue, 10 Oct 2017 00:00:00 +0000</pubDate>
         <link>/news/2017/10/10/openMessaging-launches-with-linux-foundation/</link>
         <guid isPermaLink="true">/news/2017/10/10/openMessaging-launches-with-linux-foundation/</guid>
+        
+        
+        <category>news</category>
+        
+      </item>
+    
+      <item>
+        <title>Linux Foundation Launches OpenMessaging Project</title>
+        <description>&lt;p&gt;The roster of Linux Foundation Collaborative Project is growing again, this time with the launch of OpenMessaging project.&lt;/p&gt;
+
+&lt;p&gt;According to the project’s GitHub projec page, the goal of the effort is to provide a vendor-neutral open standard for distributed messaging and stream.&lt;/p&gt;
+
+&lt;p&gt;“OpenMessaging, which includes the establishment of industry guidelines and messaging, streaming specifications to provide a common framework for finance, e-commerce, IoT and big-data area,” the project states. “The design principles are the cloud-oriented, simplicity, flexibility, and language independent in distributed heterogeneous environments.&lt;/p&gt;
+
+&lt;p&gt;There are many different messaging standards and protocols in use today, but when it cam time for Chinese internet giant Alibaba to figure out how to enable messaging across its platform, existing solutions didn’t quite fit the bill.&lt;/p&gt;
+
+&lt;p&gt;Von Gosling, senior architect at Alibaba, co-creator of Apache RocketMQ, and original initiator of OpenMessaging stated that Alibaba has been working in the messaging and streaming field for years and explored Corba notifications, JMS and other standards to try to solve business requirements.&lt;/p&gt;
+
+&lt;p&gt;“After evaluating the available alternatives, Alibaba chose to create a new cloud-oriented messaging standard, OpenMessaging, which is a vendor-neutral and language-independent and provides industrial guidelines for areas like finance, e-commerce, IoT, and big data,” Von Gosling stated. “Moreover, it aims to develop messaging and streaming applications across heterogeneous systems and platforms.”&lt;/p&gt;
+
+&lt;p&gt;Von Gosling added that with the OpenMessaging Project at the Linux Foundation the hope is build an open, simple, scalable, and interoperable platform that benefits from contributions. Among the vendors that is joining OpenMessaging is Verizon’s Oath business unit which includes the operations of AOL and Yahoo. Coincidentally, Oath recently announced that it was discontinuing its consumer AOL Instant Messenger (AIM) platform.&lt;/p&gt;
+
+&lt;p&gt;“Oath–a Verizon subsidiary of leading media and tech brands including Yahoo and AOL– supports open, collaborative initiatives and is glad to join the OpenMessaging project.” — Joe Francis, director, Core Platforms at Oath stated.&lt;/p&gt;
+
+&lt;p&gt;OpenMessaging is still a very early effort with the current domain architecture at the 0.1 alpha milestone release.&lt;/p&gt;
+
+&lt;p&gt;News Source: &lt;a href=&quot;http://www.enterprisenetworkingplanet.com/unified_communications/linux-foundation-launches-openmessaging-project.html/&quot;&gt;Linux Foundation Launches OpenMessaging Project&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 09 Oct 2017 00:00:00 +0000</pubDate>
+        <link>/news/2017/10/09/linux-foundation-launches-openMessaging-project/</link>
+        <guid isPermaLink="true">/news/2017/10/09/linux-foundation-launches-openMessaging-project/</guid>
         
         
         <category>news</category>
