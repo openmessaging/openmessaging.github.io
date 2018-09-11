@@ -4,6 +4,9 @@
 - name: Docs
   section_id: document
   children:
+  - name: Java APIs
+    path: openmessaging-java
+
   - name: Benchmarks
     path: docs/benchmarks
     subchildren:
@@ -16,13 +19,17 @@
     - name: Apache Kafka
       path: /docs/benchmarks/kafka
 
-  - name: Java APIs
-    path: openmessaging-java
+
 - name: Blog
   path: blog
   section_id: blog
+
 - name: Community
+  path: community
   section_id: community
+
+- name: About
+  section_id: about
   children:
    - name: Charter
      path: charter
