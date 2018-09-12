@@ -23,7 +23,7 @@ The OpenMessaging community looks to eliminate these challenges through:
 
 Headquartered in Shenzhen, China, WeBank is China’s first privately-owned bank and first digital-only bank focusing on microloan borrowers and initiated by Linux Foundation Platinum member, Tencent. The company uses different banking architectures, from distributed architecture to open source technologies, and fully utilizes the benefits of messaging by implementing various messaging techniques in different scenarios, such as message exchanges, pub/sub and request/reply models.
 
-“We’ve built a messaging bus calledWeMQ, which is also compatible with other messaging services. These are critical to our business. However, after adding different messaging services, we realized there is a need for a universal, scalable and reliable standard for distributed messaging, in order for us to scale,” said Eason Chen, WeBank Tech Specialist. “We believe OpenMessaging can address our current challenges, and we look forward to contributing to its efforts.”
+“We’ve built a messaging bus called WeMQ, which is also compatible with other messaging services. These are critical to our business. However, after adding different messaging services, we realized there is a need for a universal, scalable and reliable standard for distributed messaging, in order for us to scale,” said Eason Chen, WeBank Tech Specialist. “We believe OpenMessaging can address our current challenges, and we look forward to contributing to its efforts.”
 
 As a next-generation integration PaaS technology provider, DataPipeline serves many Fortune 500 customers from financial, retail and manufacture sectors, solving the problem of integrating thousands of data sources and billions of messages in real time with zero effort.
 

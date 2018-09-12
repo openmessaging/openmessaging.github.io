@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  OpenMessaging Domain Architecture V0.3
+title:  OpenMessaging Domain Architecture
 categories: design
 author: yukon
 images:
