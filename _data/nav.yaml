@@ -28,6 +28,10 @@
   path: community
   section_id: community
 
+- name: Members
+  path: members
+  section_id: members
+
 - name: About
   section_id: about
   children:
