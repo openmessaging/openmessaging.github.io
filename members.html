@@ -15,6 +15,7 @@ clients:
 - /images/@index/Jingdong.png
 - /images/@index/chinamobile-logo.png
 - /images/@index/Whale Cloud Logo.png
+- /images/@index/QingCloud.png
 ---
 
 <style type="text/css">
@@ -34,7 +35,7 @@ clients:
 
     width: 260px;
 
-    margin-top: 10px;
+    margin-top: 20px;
 
     margin-right: 20px;
 
@@ -44,14 +45,10 @@ clients:
 
     text-align: center;
 
+    valign: middle;
+
   }
 
-  #layout img {
-    border-top-style: none;
-    border-right-style: none;
-    border-bottom-style: none;
-    border-left-style: none;
-  }
 </style>
 <body>
 <div align="center" >
@@ -59,9 +56,9 @@ clients:
     <tr>
       <td >
         <div id="layout">
-          <ul>
+          <ul align="center" valign="middle">
             {% for client in page.clients %}
-            <li><img alt="" width="200" height="100" src="{{client}}"/></li>
+            <li><img width="200" height="100" src="{{client}}"/></li>
             {% endfor %}
           </ul>
         </div>
