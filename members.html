@@ -16,8 +16,9 @@ clients:
 - /images/@index/chinamobile-logo.png
 - /images/@index/Whale Cloud Logo.png
 - /images/@index/QingCloud.png
-- /images/@index/emq-logo.png
 - /images/@index/yahoo-japan-logo.png
+- /images/@index/emq-logo.png
+- /images/@index/oms-logo.png
 ---
 
 <style type="text/css">
@@ -47,18 +48,18 @@ clients:
 
     text-align: center;
 
-    valign: middle;
+    vertical-align: middle;
 
   }
 
 </style>
 <body>
-<div align="center" >
-  <table width="1000" border="0" align="center" valign="middle" style="background: #9acbeec4;">
-    <tr>
-      <td >
+<div align="center" vertical-align="middle">
+  <table width="1000" border="0" align="center" vertical-align="middle" style="background: #9acbeec4;">
+    <tr align="center" vertical-align="middle">
+      <td align="center" vertical-align="middle">
         <div id="layout">
-          <ul align="center" valign="middle">
+          <ul align="center" vertical-align="middle">
             {% for client in page.clients %}
             <li><img width="200" height="100" src="{{client}}"/></li>
             {% endfor %}
