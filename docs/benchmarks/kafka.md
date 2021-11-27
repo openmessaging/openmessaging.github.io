@@ -18,6 +18,7 @@ $ cd openmessaging-benchmark
 You'll also need to have [Maven](https://maven.apache.org/install.html) installed.
 
 ## Create local artifacts
+> The current Kafka client version is `2.8.1`. In order to downgrade it edit the `./driver-kafka/pom.xml` file. 
 
 Once you have the repo cloned locally, you can create all the artifacts necessary to run the benchmarks with a single Maven command:
 
