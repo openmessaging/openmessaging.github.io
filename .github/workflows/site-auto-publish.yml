@@ -1,0 +1,42 @@
+name: Auto publish
+
+on:
+  push:
+    branches: [ source ]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+          path: source
+          
+    - name: Set up Ruby 2.4.1
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.4.1
+
+    - name: build
+      run: |
+        cd $GITHUB_WORKSPACE/source/
+        make setup
+        make build
+        
+    - uses: actions/checkout@v2
+      with:
+        ref: master
+        path: master
+        
+    - run: |
+          cd $GITHUB_WORKSPACE/master/
+          git rm -rf .
+          cp -Rf $GITHUB_WORKSPACE/source/_site/. .
+          ls
+          git config --global user.email "action@github.com"
+          git config --global user.name "github-action"
+          git add .
+          git status
+          git commit -m "Latest site on successful build auto-pushed to master"
+          git push  
