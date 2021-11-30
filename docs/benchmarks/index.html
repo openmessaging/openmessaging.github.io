@@ -197,11 +197,11 @@
   <li><a href="https://rocketmq.apache.org">Apache RocketMQ</a></li>
   <li><a href="https://pulsar.incubator.apache.org">Apache Pulsar</a></li>
   <li><a href="https://kafka.apache.org">Apache Kafka</a></li>
+  <li><a href="https://www.rabbitmq.com/">RabbitMQ</a></li>
+  <li><a href="https://nats.io/">NATS Streaming</a></li>
+  <li><a href="https://redis.com/">Redis</a></li>
+  <li><a href="https://pravega.io/">Pravega</a></li>
 </ul>
-
-<blockquote>
-  <p>Benchmarking suites for <a href="https://www.rabbitmq.com">RabbitMQ</a> will be available soon.</p>
-</blockquote>
 
 <p>For each platform, the benchmarking suite includes easy-to-use scripts for deploying that platform on <a href="https://www.alibabacloud.com/">AlibabaCloud</a> and <a href="https://aws.amazon.com">Amazon Web Services</a> (AWS) and then running benchmarks upon deployment. For end-to-end instructions, see platform-specific docs for:</p>
 
@@ -210,6 +210,38 @@
   <li><a href="../benchmarks/pulsar">Apache Pulsar</a></li>
   <li><a href="../benchmarks/kafka">Apache Kafka</a></li>
 </ul>
+
+<h2 id="openmessaging-benchmark-framework-components">OpenMessaging Benchmark Framework Components</h2>
+<p>The OpenMessaging Benchmark Framework contains two components - the driver, and the workers.<br />
+<strong>Driver</strong> - The main “driver” is responsible to assign the tasks, creating the benchmark topic, creating the consumers &amp; producers, etc. The benchmark executor.<br />
+<strong>Worker</strong> - A benchmark worker that listens to tasks to perform them. A worker ensemble communicates over HTTP (defaults to port <code class="highlighter-rouge">8080</code>).</p>
+
+<h2 id="basic-usage--flags">Basic usage &amp; flags</h2>
+<h3 id="driver">Driver</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo bin/benchmark \
+  --drivers driver-kafka/kafka-exactly-once.yaml \
+  --workers 1.2.3.4:8080,4.5.6.7:8080 \ # or -w 1.2.3.4:8080,4.5.6.7:8080
+  workloads/1-topic-16-partitions-1kb.yaml
+</code></pre></div></div>
+<p>| Flag                 | Description                                                       | Default |
+|———————-|——————————————————————-|———|
+| -c / –csv           | Print results from this directory to a CSV file.                  | N/A     |
+| -d / –drivers       | Drivers list. eg.: pulsar/pulsar.yaml,kafka/kafka.yaml            | N/A     |
+| -x / –extra         | Allocate extra consumer workers when your backlog builds.         | <code class="highlighter-rouge">false</code> |
+| -w / –workers       | List of worker nodes. eg: http://1.2.3.4:8080,http://4.5.6.7:8080 | N/A     |
+| -wf / –workers-file | Path to a YAML file containing the list of workers addresses.     | N/A     |
+| -h / –help          | Print help message                                                | <code class="highlighter-rouge">false</code> |</p>
+
+<h3 id="workers">Workers</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo bin/benchmark-worker \
+  --port 9090 \
+  --stats-port 9091
+</code></pre></div></div>
+<p>| Flag               | Description              | Default |
+|——————–|————————–|———|
+| -p / –port        | HTTP port to listen to.  | <code class="highlighter-rouge">8080</code>  |
+| -sp / –stats-port | Stats port to listen to. | <code class="highlighter-rouge">8081</code>  |
+| -h / –help        | Print help message       | <code class="highlighter-rouge">false</code> |</p>
 
 <h2 id="benchmarking-workloads">Benchmarking workloads</h2>
 
