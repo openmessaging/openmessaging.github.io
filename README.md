@@ -26,7 +26,7 @@ Then navigate to http://localhost:4000 to visit the site. When you make changes 
 
 ## How to publish the site
 
-Just push your change to `source` branch and [Travis CI](https://travis-ci.org/) will do the rest.
+Just push your change to `source` branch and [Travis CI](https://travis-ci.com/) will do the rest.
 
 ## HTML Structure
 
