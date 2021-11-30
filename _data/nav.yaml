@@ -18,7 +18,8 @@
       path: /docs/benchmarks/pulsar
     - name: Apache Kafka
       path: /docs/benchmarks/kafka
-
+    - name: JMS
+      path: /docs/benchmarks/jms
 
 - name: Blog
   path: blog
