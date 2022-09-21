@@ -212,8 +212,8 @@
 </ul>
 
 <h2 id="openmessaging-benchmark-framework-components">OpenMessaging Benchmark Framework Components</h2>
-<p>The OpenMessaging Benchmark Framework contains two components - the driver, and the workers.<br />
-<strong>Driver</strong> - The main “driver” is responsible to assign the tasks, creating the benchmark topic, creating the consumers &amp; producers, etc. The benchmark executor.<br />
+<p>The OpenMessaging Benchmark Framework contains two components - the driver, and the workers.
+<strong>Driver</strong> - The main “driver” is responsible to assign the tasks, creating the benchmark topic, creating the consumers &amp; producers, etc. The benchmark executor.
 <strong>Worker</strong> - A benchmark worker that listens to tasks to perform them. A worker ensemble communicates over HTTP (defaults to port <code class="highlighter-rouge">8080</code>).</p>
 
 <h2 id="basic-usage--flags">Basic usage &amp; flags</h2>
@@ -223,25 +223,25 @@
   --workers 1.2.3.4:8080,4.5.6.7:8080 \ # or -w 1.2.3.4:8080,4.5.6.7:8080
   workloads/1-topic-16-partitions-1kb.yaml
 </code></pre></div></div>
-<p>| Flag                 | Description                                                       | Default |
-|———————-|——————————————————————-|———|
-| -c / –csv           | Print results from this directory to a CSV file.                  | N/A     |
-| -d / –drivers       | Drivers list. eg.: pulsar/pulsar.yaml,kafka/kafka.yaml            | N/A     |
-| -x / –extra         | Allocate extra consumer workers when your backlog builds.         | <code class="highlighter-rouge">false</code> |
-| -w / –workers       | List of worker nodes. eg: http://1.2.3.4:8080,http://4.5.6.7:8080 | N/A     |
-| -wf / –workers-file | Path to a YAML file containing the list of workers addresses.     | N/A     |
-| -h / –help          | Print help message                                                | <code class="highlighter-rouge">false</code> |</p>
+<p>Flag                     | Description                                                       | Default
+:————————-|:——————————————————————|——-:
+ <code class="highlighter-rouge">-c</code> / <code class="highlighter-rouge">--csv</code>           | Print results from this directory to a CSV file.                  | N/A
+ <code class="highlighter-rouge">-d</code> / <code class="highlighter-rouge">--drivers</code>       | Drivers list. eg.: pulsar/pulsar.yaml,kafka/kafka.yaml            | N/A
+ <code class="highlighter-rouge">-x</code> / <code class="highlighter-rouge">--extra</code>         | Allocate extra consumer workers when your backlog builds.         | <code class="highlighter-rouge">false</code>
+ <code class="highlighter-rouge">-w</code> / <code class="highlighter-rouge">--workers</code>       | List of worker nodes. eg: http://1.2.3.4:8080,http://4.5.6.7:8080 | N/A
+ <code class="highlighter-rouge">-wf</code> / <code class="highlighter-rouge">--workers-file</code> | Path to a YAML file containing the list of workers addresses.     | N/A
+ <code class="highlighter-rouge">-h</code> / <code class="highlighter-rouge">--help</code>          | Print help message                                                | <code class="highlighter-rouge">false</code></p>
 
 <h3 id="workers">Workers</h3>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo bin/benchmark-worker \
   --port 9090 \
   --stats-port 9091
 </code></pre></div></div>
-<p>| Flag               | Description              | Default |
-|——————–|————————–|———|
-| -p / –port        | HTTP port to listen to.  | <code class="highlighter-rouge">8080</code>  |
-| -sp / –stats-port | Stats port to listen to. | <code class="highlighter-rouge">8081</code>  |
-| -h / –help        | Print help message       | <code class="highlighter-rouge">false</code> |</p>
+<p>Flag                   | Description              | Default
+:———————–|:————————-|——-:
+ <code class="highlighter-rouge">-p</code> / <code class="highlighter-rouge">--port</code>        | HTTP port to listen to.  | <code class="highlighter-rouge">8080</code>
+ <code class="highlighter-rouge">-sp</code> / <code class="highlighter-rouge">--stats-port</code> | Stats port to listen to. | <code class="highlighter-rouge">8081</code>
+ <code class="highlighter-rouge">-h</code> / <code class="highlighter-rouge">--help</code>        | Print help message       | <code class="highlighter-rouge">false</code></p>
 
 <h2 id="benchmarking-workloads">Benchmarking workloads</h2>
 
@@ -467,13 +467,20 @@
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">Pub latency (ms) avg</code></td>
-      <td style="text-align: left">The publish latency within the time range</td>
+      <td style="text-align: left">The time taken by the producer to publish the message — values &gt;60s are not captured</td>
       <td style="text-align: left">Milliseconds (average, 50th percentile, 99th percentile, and 99.9th percentile, and maximum)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">Pub delay (µs) avg</code></td>
+      <td style="text-align: left">The time that message production is delayed relative to the ideal throughput — values &gt;60s are not captured</td>
+      <td style="text-align: left">Microseconds (average, 50th percentile, 99th percentile, and 99.9th percentile, and maximum)</td>
     </tr>
   </tbody>
 </table>
 
-<p>At the end of each <a href="#benchmarking-workloads">workload</a>, you’ll see a log message that aggregages the results:</p>
+<p>If you see a large or increasing <code class="highlighter-rouge">Pub delay</code> it is a sign that the workload configuration cannot achieve the requested throughput.</p>
+
+<p>At the end of each <a href="#benchmarking-workloads">workload</a>, you’ll see a log message that aggregates the results:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>22:19:20.577 [main] INFO - ----- Aggregated Pub Latency (ms) avg:  1.8 - 50%:  1.7 - 95%:  2.8 - 99%:  3.0 - 99.9%:  8.0 - 99.99%: 17.1 - Max: 58.9
 </code></pre></div></div>
