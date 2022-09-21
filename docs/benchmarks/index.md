@@ -35,9 +35,9 @@ For each platform, the benchmarking suite includes easy-to-use scripts for deplo
 * [Apache Kafka](../benchmarks/kafka)
 
 ## OpenMessaging Benchmark Framework Components
-The OpenMessaging Benchmark Framework contains two components - the driver, and the workers.  
-**Driver** - The main "driver" is responsible to assign the tasks, creating the benchmark topic, creating the consumers & producers, etc. The benchmark executor.  
-**Worker** - A benchmark worker that listens to tasks to perform them. A worker ensemble communicates over HTTP (defaults to port `8080`). 
+The OpenMessaging Benchmark Framework contains two components - the driver, and the workers.
+**Driver** - The main "driver" is responsible to assign the tasks, creating the benchmark topic, creating the consumers & producers, etc. The benchmark executor.
+**Worker** - A benchmark worker that listens to tasks to perform them. A worker ensemble communicates over HTTP (defaults to port `8080`).
 
 ## Basic usage & flags
 ### Driver
@@ -47,14 +47,14 @@ $ sudo bin/benchmark \
   --workers 1.2.3.4:8080,4.5.6.7:8080 \ # or -w 1.2.3.4:8080,4.5.6.7:8080
   workloads/1-topic-16-partitions-1kb.yaml
 ```
-| Flag                 | Description                                                       | Default |
-|----------------------|-------------------------------------------------------------------|---------|
-| -c / --csv           | Print results from this directory to a CSV file.                  | N/A     |
-| -d / --drivers       | Drivers list. eg.: pulsar/pulsar.yaml,kafka/kafka.yaml            | N/A     |
-| -x / --extra         | Allocate extra consumer workers when your backlog builds.         | `false` |
-| -w / --workers       | List of worker nodes. eg: http://1.2.3.4:8080,http://4.5.6.7:8080 | N/A     |
-| -wf / --workers-file | Path to a YAML file containing the list of workers addresses.     | N/A     |
-| -h / --help          | Print help message                                                | `false` |
+ Flag                     | Description                                                       | Default
+:-------------------------|:------------------------------------------------------------------|-------:
+ `-c` / `--csv`           | Print results from this directory to a CSV file.                  | N/A
+ `-d` / `--drivers`       | Drivers list. eg.: pulsar/pulsar.yaml,kafka/kafka.yaml            | N/A
+ `-x` / `--extra`         | Allocate extra consumer workers when your backlog builds.         | `false`
+ `-w` / `--workers`       | List of worker nodes. eg: http://1.2.3.4:8080,http://4.5.6.7:8080 | N/A
+ `-wf` / `--workers-file` | Path to a YAML file containing the list of workers addresses.     | N/A
+ `-h` / `--help`          | Print help message                                                | `false`
 
 ### Workers
 ```
@@ -62,11 +62,11 @@ $ sudo bin/benchmark-worker \
   --port 9090 \
   --stats-port 9091
 ```
-| Flag               | Description              | Default |
-|--------------------|--------------------------|---------|
-| -p / --port        | HTTP port to listen to.  | `8080`  |
-| -sp / --stats-port | Stats port to listen to. | `8081`  |
-| -h / --help        | Print help message       | `false` |
+ Flag                   | Description              | Default
+:-----------------------|:-------------------------|-------:
+ `-p` / `--port`        | HTTP port to listen to.  | `8080`
+ `-sp` / `--stats-port` | Stats port to listen to. | `8081`
+ `-h` / `--help`        | Print help message       | `false`
 
 ## Benchmarking workloads
 
