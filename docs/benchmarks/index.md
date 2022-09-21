@@ -125,9 +125,12 @@ Measure | Meaning | Units
 `Pub rate` | The rate at which messages are published to the topic | Messages per second / Megabytes per second
 `Cons rate` | The rate at which messages are consumed from the topic | Messages per second / Megabytes per second
 `Backlog` | The number of messages in the messaging system's backlog | Number of messages (in thousands)
-`Pub latency (ms) avg` | The publish latency within the time range | Milliseconds (average, 50th percentile, 99th percentile, and 99.9th percentile, and maximum)
+`Pub latency (ms) avg` | The time taken by the producer to publish the message — values >60s are not captured | Milliseconds (average, 50th percentile, 99th percentile, and 99.9th percentile, and maximum)
+`Pub delay (µs) avg` | The time that message production is delayed relative to the ideal throughput — values >60s are not captured | Microseconds (average, 50th percentile, 99th percentile, and 99.9th percentile, and maximum)
 
-At the end of each [workload](#benchmarking-workloads), you'll see a log message that aggregages the results:
+If you see a large or increasing `Pub delay` it is a sign that the workload configuration cannot achieve the requested throughput.
+
+At the end of each [workload](#benchmarking-workloads), you'll see a log message that aggregates the results:
 
 ```
 22:19:20.577 [main] INFO - ----- Aggregated Pub Latency (ms) avg:  1.8 - 50%:  1.7 - 95%:  2.8 - 99%:  3.0 - 99.9%:  8.0 - 99.99%: 17.1 - Max: 58.9
