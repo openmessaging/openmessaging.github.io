@@ -47,6 +47,7 @@ $ sudo bin/benchmark \
   --workers 1.2.3.4:8080,4.5.6.7:8080 \ # or -w 1.2.3.4:8080,4.5.6.7:8080
   workloads/1-topic-16-partitions-1kb.yaml
 ```
+
  Flag                     | Description                                                       | Default
 :-------------------------|:------------------------------------------------------------------|-------:
  `-c` / `--csv`           | Print results from this directory to a CSV file.                  | N/A
@@ -62,6 +63,7 @@ $ sudo bin/benchmark-worker \
   --port 9090 \
   --stats-port 9091
 ```
+
  Flag                   | Description              | Default
 :-----------------------|:-------------------------|-------:
  `-p` / `--port`        | HTTP port to listen to.  | `8080`
