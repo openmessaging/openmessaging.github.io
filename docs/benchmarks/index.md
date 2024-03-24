@@ -56,6 +56,16 @@ $ sudo bin/benchmark \
  `-wf` / `--workers-file` | Path to a YAML file containing the list of workers addresses.     | N/A
  `-h` / `--help`          | Print help message                                                | `false`
 
+here is an example of a file for `--workers-file` flag
+
+```yaml
+workers:
+ - http://1.1.1.1:8080
+ - http://1.1.1.2:8080
+ - http://1.1.1.3:8080
+ - http://1.1.1.4:8080
+ ```
+
 ### Workers
 ```
 $ sudo bin/benchmark-worker \
@@ -100,19 +110,19 @@ Workload | Topics | Partitions per topic | Message size | Subscriptions per topi
 
 ## Interpreting the results
 
-Initially, you should see a log message like this, which affirms that a warm-up phase is intiating:
+Initially, you should see a log message like this, which affirms that a warm-up phase is initiating:
 
 ```
 22:03:19.125 [main] INFO - ----- Starting warm-up traffic ------
 ```
 
-You should then see some just a handful of readings, followed by an aggregation message that looks like this:
+You should then see just a handful of readings, followed by an aggregation message that looks like this:
 
 ```
 22:04:19.329 [main] INFO - ----- Aggregated Pub Latency (ms) avg:  2.1 - 50%:  1.7 - 95%:  3.0 - 99%: 11.8 - 99.9%: 45.4 - 99.99%: 52.6 - Max: 55.4
 ```
 
-At this point, the benchmarking traffic will begin. You'll start see readings like this emitted every few seconds:
+At this point, the benchmarking traffic will begin. You'll start to see readings like this emitted every few seconds:
 
 ```
 22:03:29.199 [main] INFO - Pub rate 50175.1 msg/s /  4.8 Mb/s | Cons rate 50175.2 msg/s /  4.8 Mb/s | Backlog:  0.0 K | Pub Latency (ms) avg:  3.5 - 50%:  1.9 - 99%: 39.8 - 99.9%: 52.3 - Max: 55.4
