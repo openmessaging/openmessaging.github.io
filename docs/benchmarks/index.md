@@ -56,6 +56,16 @@ $ sudo bin/benchmark \
  `-wf` / `--workers-file` | Path to a YAML file containing the list of workers addresses.     | N/A
  `-h` / `--help`          | Print help message                                                | `false`
 
+here is an example of a file for `--workers-file` flag
+
+```yaml
+workers:
+ - http://1.1.1.1:8080
+ - http://1.1.1.2:8080
+ - http://1.1.1.3:8080
+ - http://1.1.1.4:8080
+ ```
+
 ### Workers
 ```
 $ sudo bin/benchmark-worker \
